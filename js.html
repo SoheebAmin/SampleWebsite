@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="css/styles.css">
 </head>
 
-<body id="grid">
+<body style="background: rgba(76, 80, 200, 0.1)">
   
   <!-- The sourcepage for all the javascript on the website-->
   <script src="js/scripts.js">
@@ -35,9 +35,9 @@
   <!-- Scambles user input with a JS function. Return false means keep us on the page-->
   <form onsubmit="scramble(); return false;">
     <div class="form-group">
-      <label for="scramble_text">Whatever you enter here will be scrambled</label>
+      <label for="scramble_text">Whatever you enter here will be scrambled.</label>
       <input type="text" class="form-control" id="scramble_text" aria-describedby="scambler" placeholder="Text to scramble">
-      <small id="scambler" class="form-text text-muted">The scrambled text will pop up as an alert.</small>
+      <small id="scambler" class="form-text text-muted">The scrambled text will pop up as an alert.</small> <br>
       <button type="Scramble" class="btn btn-primary">Scramble</button>
   </form>
 

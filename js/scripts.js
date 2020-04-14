@@ -2,9 +2,14 @@
 
 function scramble()
 {
-  //grabs the input from the form
-  let text_to_scramble = document.querySelector('#scramble_text').value
-  
+  //grabs the input from the form, and gives error if none.
+  let text_to_scramble = document.querySelector('#scramble_text').value;
+  if (text_to_scramble === '')
+  {
+    alert('You have to type something in for me to scramble it!');
+    return;
+  }
+
   function getRandomInt(n) 
   {
     return Math.floor(Math.random() * n);

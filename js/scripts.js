@@ -45,3 +45,8 @@ function scramble()
   // Alert to display
   alert('Scambled Text: ' + scrambled_text);
 }
+
+function changeStyle(url) 
+{
+  document.getElementById('stylesheet').href = url;
+}

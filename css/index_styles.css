@@ -8,6 +8,9 @@ h1
     font-weight: none;
     color: #ffff;
     font-size: 70px;
+
+    /* adds a black border to the text */
+    -webkit-text-stroke: 1px black;
 }
   
 h3
@@ -15,18 +18,17 @@ h3
     font-weight: bold;
     color: #ffff;
     font-size: 24px;
+    -webkit-text-stroke: 1px black;
 }
 
-  #videoBG 
-  html,body {
+/* For homepage BG video and scaling */
+
+html,body {
     width:100vw;
     height: 100vh;
     margin: 0;
 }
-
-/* For homepage BG video and scaling */
-#videoBG 
-{
+#videoBG {
     position:fixed;
     z-index: -1;
 }

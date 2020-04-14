@@ -26,7 +26,7 @@ The following must be part of the HTML page that uses this graphic:
   </div>
 */
 
-/* To keep the nav bar visible */
+/* To keep the nav bar visible.*/
 .navbar 
 {
     z-index: 1;

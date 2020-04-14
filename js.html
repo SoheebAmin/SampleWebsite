@@ -14,22 +14,32 @@
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/3/w3.css">
   <link rel="stylesheet" href="css/styles.css">
 </head>
-<body>
- <!-- The sourcepage for all the javascript on the website-->
-  <script src="scripts.js">
+
+<body id="grid">
+  
+  <!-- The sourcepage for all the javascript on the website-->
+  <script src="js/scripts.js">
   </script>
 
   <!-- The Navigation bar -->
   <nav class="w3-bar w3-black" class="navbar">
-    <a href="index.html" class="w3-button w3-bar-item">The Minimalistic Home</a>
+    <a href="index.html" class="w3-button w3-bar-item">Homepage</a>
     <a href="forms.html" class="w3-button w3-bar-item">Fill Forms</a>
     <a href="bg.html" class="w3-button w3-bar-item">Background Effects</a>
     <a href="js.html" class="w3-button w3-bar-item">Fun with Javascript</a>
   </nav>
 
   <!--text to display-->
-  <h1 class="text-light" style="text-align:center">Let's see what Javascript can Bring to the Table</h1>
-  <h3 class="text-light"style="text-align:center">Coming Soon</h3>
+  <h2 class="text-dark" style="text-align:center">Let's see what Javascript can Bring to the Table</h1>
+  
+  <!-- Scambles user input with a JS function. Return false means keep us on the page-->
+  <form onsubmit="scramble(); return false;">
+    <div class="form-group">
+      <label for="scramble_text">Whatever you enter here will be scrambled</label>
+      <input type="text" class="form-control" id="scramble_text" aria-describedby="scambler" placeholder="Text to scramble">
+      <small id="scambler" class="form-text text-muted">The scrambled text will pop up as an alert.</small>
+      <button type="Scramble" class="btn btn-primary">Scramble</button>
+  </form>
 
 </body>
 

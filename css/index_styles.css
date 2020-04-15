@@ -17,7 +17,7 @@ h3
 {
     font-weight: bold;
     color: #ffff;
-    font-size: 24px;
+    font-size: 28px;
     -webkit-text-stroke: 1px black;
 }
 
@@ -25,17 +25,19 @@ h4
 {
     font-weight: bold;
     color: #ffff;
-    font-size: 20px;
+    font-size: 22px;
     -webkit-text-stroke: 1px black;
 }
 
-a
+#h4_link
 {
     font-weight: bold;
     color: darkblue;
-    font-size: 20px;
-    -webkit-text-stroke: 0px;
+    font-size: 22px;
+    -webkit-text-stroke: 0px black;
 }
+
+
 
 /* For homepage BG video and scaling */
 

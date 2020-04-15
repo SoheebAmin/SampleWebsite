@@ -12,10 +12,13 @@
   <!--Relevant CSS pages (local and online) for this page-->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/3/w3.css">
-  <link rel="stylesheet" href="css/styles.css">
-  <link rel="stylesheet" href="css/example_bgs_css/gradient_bg.css" id="stylesheet">
+  <link rel="stylesheet" href="css/bg_styes.css"
+  
+  <!-- the starting background in the cycle of bgs for this page. The ID is important for JS to identify this element-->
+  <link rel="stylesheet" href="css/example_bgs_css/stylesheet0.css" id="stylesheet">
+
 </head>
-<body>  
+<body id="the_bg">  
  <!-- The sourcepage for all the javascript on the website-->
   <script src="js/scripts.js">
   </script>
@@ -29,36 +32,17 @@
   </nav>
 
   <!--text to display-->
-  <div style="text-align: center;">
+  <div style="text-align: center">
     <br><br><br><br><br>
-    <h1 class="text-dark">Cycle Through Wallpapers Made Possible with CSS</h1> <br><br>
-    <button type="button" class="btn btn-danger">Click here to change to another background</button>
-    <a href="#" onclick="changeStyle('css/example_bgs_css/gradient_bg.css');return false;" >gradient</a> 
-    <a href="#" onclick="changeStyle('css/example_bgs_css/particle_bg.css');return false;" >particle</a>
+    <h1 class="text-light">Cycle Through Backgrounds Made Possible with CSS</h1> <br><br>
+    <button type="button" class="btn btn-danger" onclick="changeStyle();return false">
+      Click here to change backgrounds</button>
   </div>
 
-  <div class = "background">
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    </div>
+  <!-- required for particle background -->
+  <div class = "background"> <span></span><span></span><span></span><span></span><span></span><span>
+  </span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+  <span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
 
 </body>
 

@@ -19,16 +19,3 @@ body
         background-position: 0% 50%;
     }
 }
-
-/* redefines h1 and h2 headers*/
-h1 {
-    font-weight: none;
-    color: #fff;
-    font-size: 70px;
-  }
-  
-  h2 {
-    font-weight: bold;
-    color: #fff;
-    font-size: 24px;
-  }

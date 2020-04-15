@@ -1,48 +1,20 @@
-/* This is an animation from Codepen originally written in Sass, a style sheet language which compiles to CSS.
+/* The following must be at the bottom of the HTML page that uses this background effect:
 
-The following must be part of the HTML page that uses this graphic:
-
-  <div class = "background">
-  <span></span>
-  <span></span>
-  <span></span>
-  <span></span>
-  <span></span>
-  <span></span>
-  <span></span>
-  <span></span>
-  <span></span>
-  <span></span>
-  <span></span>
-  <span></span>
-  <span></span>
-  <span></span>
-  <span></span>
-  <span></span>
-  <span></span>
-  <span></span>
-  <span></span>
-  <span></span>
-  </div>
+  <div class = "background"> <span></span><span></span><span></span><span></span><span></span><span>
+  </span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+  <span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
 */
 
-/* To keep the nav bar visible.*/
-.navbar 
-{
-    z-index: 1;
+#the_bg {
+  width: 100vw;
+  height: 100vh;
+  background: #3E1E68;
 }
-
 
 body {
     margin: 0;
     overflow: hidden;
-  }
-  
-  .background {
-    width: 100vw;
-    height: 100vh;
-    background: #3E1E68;
-  }
+}
   
   .background span {
     width: 20vmin;

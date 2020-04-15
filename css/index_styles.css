@@ -21,6 +21,22 @@ h3
     -webkit-text-stroke: 1px black;
 }
 
+h4
+{
+    font-weight: bold;
+    color: #ffff;
+    font-size: 20px;
+    -webkit-text-stroke: 1px black;
+}
+
+a
+{
+    font-weight: bold;
+    color: darkblue;
+    font-size: 20px;
+    -webkit-text-stroke: 0px;
+}
+
 /* For homepage BG video and scaling */
 
 html,body {

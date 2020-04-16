@@ -63,4 +63,3 @@ function changeStyle()
   }
   document.getElementById('stylesheet').href = "css/example_bgs_css/stylesheet" + style_counter +".css";
 }
-

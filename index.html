@@ -17,9 +17,12 @@
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/3/w3.css">
   <link rel="stylesheet" href="css/index_styles.css">
   
-  <!-- required for modals to work-->
+  <!-- Sripts required for modals to work-->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+   <!-- Local JS Source-->
+   <script src="js/scripts.js"></script>
 
   
 </head>
@@ -29,10 +32,6 @@
   <video id="videoBG" poster="media/waves_poster.jpg" autoplay muted loop>
     <source src="media/waves.mp4" type="video/mp4">
   </video>
-
- <!-- JS Source-->
-  <script src="js/scripts.js">
-  </script>
 
   <!-- The Navigation bar, styled by W3 schools -->
   <nav class="w3-bar w3-black" class="navbar">
@@ -52,10 +51,9 @@
 
   <br><br><br>
 
+  <!-- Modal button and its content-->
   <div class="container" id="top_right">
-    <!-- Modal Button -->
     <button id="button_adjust" type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Explanation</button>
-    <!-- Modal and its content -->
     <div class="modal fade" id="myModal" role="dialog">
       <div class="modal-dialog">
         <div class="modal-content">

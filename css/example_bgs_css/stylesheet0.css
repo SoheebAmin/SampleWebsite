@@ -1,10 +1,8 @@
-/* This is a gradient animation from Codepen */
-
 body 
 {
     background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
     background-size: 1920% 1080%;
-    animation: gradient 20s ease infinite;
+    animation: gradient 7s ease infinite;
 }
 
 @keyframes gradient 

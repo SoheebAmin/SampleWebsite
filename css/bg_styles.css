@@ -1,0 +1,20 @@
+
+/* Place the any element (in this case, the modal explain button) at the top right of the website. */
+
+
+#bg_text
+{   
+    font-family: gergia, serif;
+    font-size: 70;
+    color: white;
+}
+#top_right
+{
+   position:absolute; top: 8ex; right: -120ex;
+}
+
+#button_adjust
+{
+    background-color: rgb(201, 48, 44);
+    border-color: rgb(201, 48, 44);
+}

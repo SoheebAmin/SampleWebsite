@@ -1,4 +1,11 @@
 #the_bg
 {
-    background-color: black;
+    background-color: white;
+}
+
+#bg_text
+{   
+    font-family: gergia, serif;
+    font-size: 70;
+    color: black;
 }

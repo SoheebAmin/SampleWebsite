@@ -8,9 +8,10 @@
     font-size: 70;
     color: white;
 }
+
 #top_right
 {
-   position:absolute; top: 8ex; right: -120ex;
+   position:absolute; top: 8ex; right: -65ex;
 }
 
 #button_adjust

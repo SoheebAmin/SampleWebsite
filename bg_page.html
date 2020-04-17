@@ -1,4 +1,12 @@
-<!--This page shows different animated bgs that could be applied to the site. It uses JS to change between them-->
+<!--This is the most intricate page on this website. It starts with no background at all, but gives the user 3 options:
+
+  1. Add an HTML only background.
+  2. Add a CSS styled background.
+  3. Add a CSS + JS styled background.
+
+  Each button can cycle between 5 options for each choice, but also, the option of removing the CSS is available for CSS
+  pages, and the CSS and/or JS for the CSS + JS pages. All of this is done by using JQuery to update the HTML, CSS, and 
+  JS scripts on this page -->
 
 <!doctype html>
 
@@ -9,7 +17,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!--Relevant CSS pages (local and online) for this page-->
- 
   <link rel="stylesheet" href="css/bg_page_styles.css">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/3/w3.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -20,14 +27,20 @@
 
   <title>Backgrounds</title>
   <!-- CSS and JS references updated using JS with the button on the page -->
-  <link rel="stylesheet" href="for_bg_page_cycles/css_for_bgs/stylesheet0.css" id="stylesheet">
-  
+  <link rel="stylesheet" href="for_bg_page_cycles/css_bgs/stylesheet0.css" id="stylesheet">
+  <script src="for_bg_page_cycles/js_bgs/script0.js" id="script"></script>
+
+
   <!-- Local JS Source-->
   <script src="js/bg_page_scripts.js"></script>
+  
 
 </head>
 
-<body id="the_bg">  
+<body id="the_bg">
+
+  <div id="html_to_include"></div>
+
   <!-- The Navigation bar -->
   <nav class="w3-bar w3-black" class="navbar" style="font-family: verdana">
     <a href="index.html" class="w3-button w3-bar-item">Homepage</a>
@@ -41,61 +54,68 @@
     <br><br><br><br><br>
     <h1 id="bg_text">Cycle through backgrounds that use different languages.</h1> <br><br>
     <button type="button" class="btn btn-danger" onclick="changeStyleHTML();return false">
-    HTML Only</button>
+      HTML Only</button>
 
     <div style="text-align: center">
       <br><br><br>
       <button type="button" class="btn btn-danger" onclick="changeStyleCSS();return false">
-      HTML and CSS</button>
+        HTML and CSS</button>
 
-    <div style="text-align: center">
-      <br><br><br>
-      <button type="button" class="btn btn-danger" onclick="changeStyleJS();return false">
-      HTML, CSS, and Javascript</button>
-      
-  </div>
+      <div style="text-align: center">
+        <br><br><br>
+        <button type="button" class="btn btn-danger" onclick="changeStyleJS();return false">
+          HTML, CSS, and Javascript</button>
 
-    <!-- Modal button and its content-->
-    <div class="container" id="top_right">
-      <button id="button_adjust" type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Explanation</button>
-      <div class="modal fade" id="myModal" role="dialog">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal">&times;</button>
-              <h5 class="modal-title">Backgrounds Explained</h5>
-            </div>
-            <div class="modal-body" style="text-align: justify;">
-              <p>This background page comprises of 4 main components:</p>
-              <ul>The header: This is a modified header provided by W3 schools. Their stylesheet is linked in the HTML.</ul>
-              <ul>The changing backgrounds: Each background has its own stylesheet updated by JS. All sheets have the name stylesheet + 1. The JS function adds one until the last sheet and cycles back to 0.</ul>
-              <ul>The page text and change button: This is basic HTML text my own styling.</ul>
-              <ul>This explanation pop-up: This is a button and modal provided by bootstrap, with a bit of customization for button position and color with my own CSS.</ul>
-              <p>As with most pages on this sample site, the stylesheets are from libararies, with a self-made stylesheet to customize provided styles as desired.
-                 Besides just viewing it in your browser, the source code for this page can be found <a style="color:blue" href="https://github.com/SoheebAmin/Website_Tutorial/blob/master/bg.html">here</a>. 
-                 The code has comments to explain what each portion of code is doing.</p>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Got it</button>
+      </div>
+
+      <!-- Modal button and its content-->
+      <div class="container" id="top_right">
+        <button id="button_adjust" type="button" class="btn btn-info btn-lg" data-toggle="modal"
+          data-target="#myModal">Explanation</button>
+        <div class="modal fade" id="myModal" role="dialog">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h5 class="modal-title">Backgrounds Explained</h5>
+              </div>
+              <div class="modal-body" style="text-align: justify;">
+                <p>This background page comprises of 4 main components:</p>
+                <ul>The header: This is a modified header provided by W3 schools. Their stylesheet is linked in the
+                  HTML.</ul>
+                <ul>The changing backgrounds: Each background has its own stylesheet updated by JS. All sheets have the
+                  name stylesheet + 1. The JS function adds one until the last sheet and cycles back to 0.</ul>
+                <ul>The page text and change button: This is basic HTML text my own styling.</ul>
+                <ul>This explanation pop-up: This is a button and modal provided by bootstrap, with a bit of
+                  customization for button position and color with my own CSS.</ul>
+                <p>As with most pages on this sample site, the stylesheets are from libararies, with a self-made
+                  stylesheet to customize provided styles as desired.
+                  Besides just viewing it in your browser, the source code for this page can be found <a
+                    style="color:blue"
+                    href="https://github.com/SoheebAmin/Website_Tutorial/blob/master/bg.html">here</a>.
+                  The code has comments to explain what each portion of code is doing.</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Got it</button>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>  
 
-  <!-- required for particle background -->
-  <div class = "background"> 
-  <span></span><span></span><span></span><span></span><span></span><span>
-  </span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
-  <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
-  </div>
+      <!-- required for particle background -->
+      <div class="background">
+        <span></span><span></span><span></span><span></span><span></span><span>
+        </span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+      </div>
 
-  <canvas id="sakura"></canvas>
-    <div class="btnbg">
-    </div>
-    
-    <!-- required for sakura leaves background -->
-    <script id="sakura_point_vsh" type="x-shader/x_vertex">
+      <canvas id="sakura"></canvas>
+      <div class="btnbg">
+      </div>
+
+      <!-- required for sakura leaves background -->
+      <script id="sakura_point_vsh" type="x-shader/x_vertex">
     uniform mat4 uProjection;
     uniform mat4 uModelview;
     uniform vec3 uResolution;
@@ -187,7 +207,7 @@
         distancefade = min(1.0, exp((uFade.x - pdist) * 0.69315 / uFade.y));
     }
     </script>
-    <script id="sakura_point_fsh" type="x-shader/x_fragment">
+      <script id="sakura_point_fsh" type="x-shader/x_fragment">
     #ifdef GL_ES
     //precision mediump float;
     precision highp float;
@@ -259,8 +279,8 @@
         gl_FragColor = vec4(col * 0.5, alpha);
     }
     </script>
-    <!-- effects -->
-    <script id="fx_common_vsh" type="x-shader/x_vertex">
+      <!-- effects -->
+      <script id="fx_common_vsh" type="x-shader/x_vertex">
     uniform vec3 uResolution;
     attribute vec2 aPosition;
     
@@ -273,7 +293,7 @@
         screenCoord = aPosition.xy * vec2(uResolution.z, 1.0);
     }
     </script>
-    <script id="bg_fsh" type="x-shader/x_fragment">
+      <script id="bg_fsh" type="x-shader/x_fragment">
     #ifdef GL_ES
     //precision mediump float;
     precision highp float;
@@ -293,7 +313,7 @@
         gl_FragColor = vec4(col * 0.5, 1.0);
     }
     </script>
-    <script id="fx_brightbuf_fsh" type="x-shader/x_fragment">
+      <script id="fx_brightbuf_fsh" type="x-shader/x_fragment">
     #ifdef GL_ES
     //precision mediump float;
     precision highp float;
@@ -309,7 +329,7 @@
         gl_FragColor = vec4(col.rgb * 2.0 - vec3(0.5), 1.0);
     }
     </script>
-    <script id="fx_dirblur_r4_fsh" type="x-shader/x_fragment">
+      <script id="fx_dirblur_r4_fsh" type="x-shader/x_fragment">
     #ifdef GL_ES
     //precision mediump float;
     precision highp float;
@@ -330,8 +350,8 @@
         gl_FragColor = col / 5.0;
     }
     </script>
-    <!-- effect fragment shader template -->
-    <script id="fx_common_fsh" type="x-shader/x_fragment">
+      <!-- effect fragment shader template -->
+      <script id="fx_common_fsh" type="x-shader/x_fragment">
     #ifdef GL_ES
     //precision mediump float;
     precision highp float;
@@ -346,8 +366,8 @@
         gl_FragColor = texture2D(uSrc, texCoord);
     }
     </script>
-    <!-- post processing -->
-    <script id="pp_final_vsh" type="x-shader/x_vertex">
+      <!-- post processing -->
+      <script id="pp_final_vsh" type="x-shader/x_vertex">
     uniform vec3 uResolution;
     attribute vec2 aPosition;
     varying vec2 texCoord;
@@ -358,7 +378,7 @@
         screenCoord = aPosition.xy * vec2(uResolution.z, 1.0);
     }
     </script>
-    <script id="pp_final_fsh" type="x-shader/x_fragment">
+      <script id="pp_final_fsh" type="x-shader/x_fragment">
     #ifdef GL_ES
     //precision mediump float;
     precision highp float;

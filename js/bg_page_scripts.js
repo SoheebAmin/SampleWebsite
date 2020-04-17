@@ -1,27 +1,38 @@
 // Scripts that allow the the cycling between CSS, HTML, and JS background pages, stylesheets, and scripts
 
 
-// Changes the CSS styles by modifying the name of the ref stylesheet with a counter
-let style_counter = 0;
-let current_stylesheets = 5;
+// Script to change the HTML imported to the page, based on counter
 
+let html_counter = 0;
+let html_max = 4;
 
 function changeStyleHTML() 
 {
-  if (style_counter != current_stylesheets)
+  if (html_counter != html_max)
   {
-    style_counter-=1;
+    html_counter++;
   }
   else
   {
-    style_counter = 0;
+    html_counter = 0;
   }
-  document.getElementById('stylesheet').href = "for_bg_page_cycles/css_for_bgs/stylesheet" + style_counter +".css";
 }
+
+$(function()
+{
+  $("#html_to_include").load("for_bg_page_cycles/html_only_bgs/html_only" + html_counter + ".html") 
+});
+
+
+
+// Changes the CSS styles by modifying the name of the ref stylesheet with a counter
+
+let style_counter = 0;
+let stylesheets_max = 4;
 
 function changeStyleCSS() 
 {
-  if (style_counter != current_stylesheets)
+  if (style_counter != stylesheets_max)
   {
     style_counter++;
   }
@@ -29,19 +40,21 @@ function changeStyleCSS()
   {
     style_counter = 0;
   }
-  document.getElementById('stylesheet').href = "for_bg_page_cycles/css_for_bgs/stylesheet" + style_counter +".css";
+  document.getElementById('stylesheet').href = "for_bg_page_cycles/css_bgs/stylesheet" + style_counter +".css";
 }
+
+let JS_counter = 0;
+let JS_max = 4;
 
 function changeStyleJS() 
 {
-  if (style_counter != current_stylesheets)
+  if (JS_counter != JS_max)
   {
-    style_counter++;
-    style_counter++;
+    JS_counter++;
   }
   else
   {
-    style_counter = 0;
+    JS_counter = 0;
   }
-  document.getElementById('stylesheet').href = "for_bg_page_cycles/css_for_bgs/stylesheet" + style_counter +".css";
+  document.getElementById('script').src = "for_bg_page_cycles/js_bgs/script" + JS_counter +".js";
 }

@@ -1,4 +1,4 @@
-// This file needs to be linked as the source scripts page for JS, and then functions can be referenced here.
+// These are the scripts needed for the JS page.
 
 function scramble()
 {
@@ -44,22 +44,4 @@ function scramble()
 
   // Alert to display
   alert('Scambled Text: ' + scrambled_text);
-}
-
-
-// Changes the CSS styles by modifying the name of the ref stylesheet with a counter
-let style_counter = 0;
-let current_stylesheets = 5;
-
-function changeStyle() 
-{
-  if (style_counter != current_stylesheets)
-  {
-    style_counter++;
-  }
-  else
-  {
-    style_counter = 0;
-  }
-  document.getElementById('stylesheet').href = "css/example_bgs_css/stylesheet" + style_counter +".css";
 }

@@ -16,7 +16,7 @@ function changeStyleHTML()
   {
     style_counter = 0;
   }
-  document.getElementById('stylesheet').href = "css/example_bgs_css/stylesheet" + style_counter +".css";
+  document.getElementById('stylesheet').href = "for_bg_page_cycles/css_for_bgs/stylesheet" + style_counter +".css";
 }
 
 function changeStyleCSS() 
@@ -29,7 +29,7 @@ function changeStyleCSS()
   {
     style_counter = 0;
   }
-  document.getElementById('stylesheet').href = "css/example_bgs_css/stylesheet" + style_counter +".css";
+  document.getElementById('stylesheet').href = "for_bg_page_cycles/css_for_bgs/stylesheet" + style_counter +".css";
 }
 
 function changeStyleJS() 
@@ -43,5 +43,5 @@ function changeStyleJS()
   {
     style_counter = 0;
   }
-  document.getElementById('stylesheet').href = "css/example_bgs_css/stylesheet" + style_counter +".css";
+  document.getElementById('stylesheet').href = "for_bg_page_cycles/css_for_bgs/stylesheet" + style_counter +".css";
 }

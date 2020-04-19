@@ -18,12 +18,6 @@ function changeStyleHTML()
   }
 }
 
-$(function()
-{
-  $("#html_to_include").load("for_bg_page_cycles/html_only_bgs/html_only" + html_counter + ".html") 
-});
-
-
 
 // Changes the CSS styles by modifying the name of the ref stylesheet with a counter
 
@@ -43,6 +37,7 @@ function changeStyleCSS()
   document.getElementById('stylesheet').href = "for_bg_page_cycles/css_bgs/stylesheet" + style_counter +".css";
 }
 
+// Utilities
 let JS_counter = 0;
 let JS_max = 4;
 
@@ -56,5 +51,14 @@ function changeStyleJS()
   {
     JS_counter = 0;
   }
-  document.getElementById('script').src = "for_bg_page_cycles/js_bgs/script" + JS_counter +".js";
+  document.getElementById('script').src= "for_bg_page_cycles/js_bgs/script" + JS_counter +".js";
+}
+
+// experimentalw way to add script.
+
+function add_script()
+{
+  var myScript = document.createElement('script');
+  myScript.setAttribute('src', 'for_bg_page_cycles/js_bgs/script1.js');
+  document.head.appendChild(myScript);
 }

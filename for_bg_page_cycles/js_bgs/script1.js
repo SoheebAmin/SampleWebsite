@@ -1,4 +1,4 @@
-alert("alert for sakura page")
+alert("alert for sakura js page loading")
 // Utilities
 var Vector3 = {};
 var Matrix44 = {};
@@ -802,7 +802,3 @@ window.addEventListener('load', function(e) {
     w['r'+r] = w['r'+r] || w['webkitR'+r] || w['mozR'+r] || w['msR'+r] || w['oR'+r] || function(c){ w.setTimeout(c, 1000 / 60); };
 })(window, 'equestAnimationFrame');
 
-$(function()
-{
-    $("#sakura_html").load("for_bg_page_cycles/js_bgs/html_for_script1.html"); 
-});

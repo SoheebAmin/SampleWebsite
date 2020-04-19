@@ -2,22 +2,26 @@
 
 <head>
     
-    <script src="for_bg_page_cycles/js_bgs/script0.js"></script>
     <script src="js/bg_page_scripts.js"></script>
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <script>
+    $(function()
+    {
+    $("#sakura_html").load("for_bg_page_cycles/js_bgs/html_for_script1.html"); 
+    });
+    </script>
+  
 </head>
 
-<body>
-
-  <div id="sakura_html"></div>
-
+<body id="sakura_html">
 
   <button type="button" class="btn btn-danger" onclick="add_script();return false">
     Button</button>
 
-
-  
+  <script src="for_bg_page_cycles/js_bgs/script1.js"></script>
+ 
 </body>
 
 </html>

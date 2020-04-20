@@ -1,0 +1,1 @@
+alert("you've loaded script 2")

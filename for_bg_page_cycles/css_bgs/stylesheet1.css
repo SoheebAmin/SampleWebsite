@@ -5,7 +5,13 @@
   <span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
 */
 
-#the_bg {
+#bg_text
+{   
+    font-family: gergia, serif;
+    color: white;
+}
+
+#body_id {
   width: 100vw;
   height: 100vh;
   background: #3E1E68;

@@ -1,0 +1,38 @@
+<html>
+
+<head>
+
+  <title> Dynamic Testing</title>
+
+  <!-- this page allows the button to add a script -->
+  <script src="js/bg_page_scripts.js"></script>
+
+  <!-- this gives us JQuery which allows us to add HTML dynamically -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+  <!-- Starting JS page -->
+  <script src="for_bg_page_cycles/js_bgs/script0.js" id="script"></script>
+
+  <!-- the dynamic loading function -->
+  <script>
+    $(function()
+    {
+      $("#inject_html").load("html_to_inject.html"); 
+    });
+  </script>
+
+</head>
+
+<body>
+
+  <!-- Where HTML will get injected -->
+  <div id="inject_html"></div>
+  
+
+  <!-- button to add a javascript page -->
+  <button type="button" class="btn btn-danger" onclick="add_script();return false">
+    Script change Button</button>
+ 
+</body>
+
+</html>

@@ -1,13 +1,11 @@
 
-/* Place the any element (in this case, the modal explain button) at the top right of the website. */
-
-
 #bg_text
-{   
+{
     font-family: gergia, serif;
-    font-size: 70;
-    color: white;
 }
+
+
+/* For modal positioning */
 
 #top_right
 {

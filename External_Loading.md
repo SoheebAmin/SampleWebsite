@@ -20,7 +20,7 @@ The function ias as follows. It can be included in a script tage in the head, or
 
 $(function()
 {
-    $("#id").load("html_source.html");
+    $("#your_id").load("html_source.html");
 });
 
 ```
@@ -29,7 +29,7 @@ and the body would include the following:
 
 ```html
 
-<body id="id">
+<div id="your_id"><div>
 
 ```
 
@@ -64,4 +64,25 @@ function changeStyleCSS()
 
 ## Javascript
 
-TO DO.
+The first thing to go over is what NOT TO DO to swap style sheets. Attempting the same method for CSS, changing href to src, didn't actually work, even though it did swap out the code in the HTML itself. The following code actually updates the source reference, but the page itself does not actually reload the Javascript to be from said source:
+
+```javascript
+
+  document.getElementById('script').src= "anoter_source.js";
+
+```
+
+Instead, creating a new script tag and added the source did actually include this new source to the page:
+
+```javascript
+
+function add_script()
+{
+  var myScript = document.createElement('script');
+  myScript.setAttribute('src', 'new_script.js');
+  document.head.appendChild(myScript);
+}
+
+```
+
+TBC.

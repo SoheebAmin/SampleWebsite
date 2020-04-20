@@ -65,72 +65,47 @@
           HTML, CSS, and Javascript</button>
       </div>
 
-      <!-- Modal button and its content-->
-      <div class="container" id="top_right">
-        <button id="button_adjust" type="button" class="btn btn-info btn-lg" data-toggle="modal"
-          data-target="#myModal">Explanation</button>
-        <div class="modal fade" id="myModal" role="dialog">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h5 class="modal-title">Backgrounds Explained</h5>
-              </div>
-              <div class="modal-body" style="text-align: justify;">
-                <p>This background page comprises of 4 main components:</p>
-                <ul>The header: This is a modified header provided by W3 schools. Their stylesheet is linked in the
-                  HTML.</ul>
-                <ul>The changing backgrounds: For HTML, each background is just a basic style applied to the body.
-                  For the CSS, each background has its own stylesheet. For the Javascript, each background is
-                  a stylesheet + JS script file. The cycling and showing/hiding elements is handled by another
-                  local Javascript file with functions created to cycle between styles, stylesheets, and script.</ul>
-                <ul>The page text and change button: This is basic HTML text my own styling.</ul>
-                <ul>This explanation pop-up: This is a button and modal provided by bootstrap, with a bit of
-                  customization for button position and color with my own CSS.</ul>
-                <p>As with most pages on this sample site, the stylesheets are from libararies, with a self-made
-                  stylesheet to customize provided styles as desired.
-                  Besides just viewing it in your browser, the source code for this page can be found <a
-                    style="color:blue"
-                    href="https://github.com/SoheebAmin/Website_Tutorial/blob/master/bg.html">here</a>.
-                  The code has comments to explain what each portion of code is doing.</p>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Got it</button>
-              </div>
-            </div>
+
+  <!-- JS will inject the appropriate HTML for each stylesheet here-->
+  <div id = inject_html></div>
+
+  <!-- Modal button and its content-->
+  <div class="container" id="top_right">
+    <button id="button_adjust" type="button" class="btn btn-info btn-lg" data-toggle="modal"
+      data-target="#myModal">Explanation</button>
+    <div class="modal fade" id="myModal" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h5 class="modal-title">Backgrounds Explained</h5>
+          </div>
+          <div class="modal-body" style="text-align: justify;">
+            <p>This background page comprises of 4 main components:</p>
+            <ul>The header: This is a modified header provided by W3 schools. Their stylesheet is linked in the
+              HTML.</ul>
+            <ul>The changing backgrounds: For HTML, each background is just a basic style applied to the body.
+              For the CSS, each background has its own stylesheet. For the Javascript, each background is
+              a stylesheet + JS script file. The cycling and showing/hiding elements is handled by another
+              local Javascript file with functions created to cycle between styles, stylesheets, and script.</ul>
+            <ul>The page text and change button: This is basic HTML text my own styling.</ul>
+            <ul>This explanation pop-up: This is a button and modal provided by bootstrap, with a bit of
+              customization for button position and color with my own CSS.</ul>
+            <p>As with most pages on this sample site, the stylesheets are from libararies, with a self-made
+              stylesheet to customize provided styles as desired.
+              Besides just viewing it in your browser, the source code for this page can be found <a
+                style="color:blue"
+                href="https://github.com/SoheebAmin/Website_Tutorial/blob/master/bg.html">here</a>.
+              The code has comments to explain what each portion of code is doing.</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Got it</button>
           </div>
         </div>
       </div>
-
-      <!-- required for particle CSS background -->
-      <div class="background">
-        <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
-        <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
-        <span></span><span></span><span></span><span></span><span></span><span></span>
-      </div>
-
-       <!-- required for blue-white circle background -->
-      <div class='ripple-background'>
-        <div class='circle xxlarge shade1'></div> <div class='circle xlarge shade2'></div>
-        <div class='circle large shade3'></div> <div class='circle mediun shade4'></div>
-        <div class='circle small shade5'></div>
-      </div>
-      
-      <!-- required for shooting star CSS background -->
-      <div class="night" style="z-index: -1">
-        <div class="shooting_star"></div><div class="shooting_star"></div><div class="shooting_star"></div>
-        <div class="shooting_star"></div><div class="shooting_star"></div><div class="shooting_star"></div>
-        <div class="shooting_star"></div><div class="shooting_star"></div><div class="shooting_star"></div>
-        <div class="shooting_star"></div><div class="shooting_star"></div><div class="shooting_star"></div>
-        <div class="shooting_star"></div><div class="shooting_star"></div><div class="shooting_star"></div>
-        <div class="shooting_star"></div><div class="shooting_star"></div><div class="shooting_star"></div>
-        <div class="shooting_star"></div><div class="shooting_star"></div>
-      </div>
-
-    <!-- required for sliding colors CSS background -->
-      <div class="bg"></div> <div class="bg bg2"></div><div class="bg bg3"></div>
-      </div>
-
+    </div>
+  </div>      
+        
 </body>
 
 </html>

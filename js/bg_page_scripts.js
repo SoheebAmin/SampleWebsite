@@ -4,7 +4,7 @@
 // This is script that would have changed HTML-only styling, but that isn't a thing since HTML5, so rather, it will
 // change the page with minimal CSS, imitating the early days of HTML with only simple BG color and image changes.
 let html_counter = 0;
-let html_max = 4;
+let html_max = 5;
 let insert_style = ""
 
 function changeStyleHTML() 
@@ -42,9 +42,13 @@ function changeStyleHTML()
   {
     insert_style = "background-image: url('media/stars_stock.png')";
     document.getElementById('bg_text').style = "color: white";
-
-  // applies the selected choice
   }
+  if (html_counter == 5)
+  {
+    insert_style = "background-image: url('media/abstract.jpg')";
+    document.getElementById('bg_text').style = "color: white";
+  }
+  // applies the selected choice
   $(function()
   {
     document.getElementById('body_id').style = insert_style;
@@ -54,7 +58,7 @@ function changeStyleHTML()
 
 // Changes the CSS styles by modifying the name of the ref stylesheet with a counter
 let style_counter = 0;
-let stylesheets_max = 4;
+let stylesheets_max = 5;
 
 function changeStyleCSS() 
 {
@@ -72,13 +76,18 @@ function changeStyleCSS()
   document.getElementById('body_id').style.removeProperty("background-image");
   document.getElementById('bg_text').style.removeProperty("color");
 
+  // inject html based on the stylesheet to load
+  $(function()
+{
+    $("#inject_html").load("for_bg_page_cycles/css_bgs/html_for_" + style_counter + ".html");
+});
+
   // sets the new stylesheet
   document.getElementById('stylesheet').href = "for_bg_page_cycles/css_bgs/stylesheet" + style_counter + ".css";
 }
 
 
 // Adds a new CSS and Javascript source
-
 let js_counter = 0;
 let js_max = 4;
 
@@ -90,8 +99,14 @@ function add_script()
   }
   else
   {
-    js_counter = 0;
+    js_counter = 1;
   }
+
+  // removes any selections made from the HTML button
+  document.getElementById('body_id').style.removeProperty("background-color");
+  document.getElementById('body_id').style.removeProperty("background-image");
+  document.getElementById('bg_text').style.removeProperty("color");
+
   var myScript = document.createElement('script');
   myScript.setAttribute('src', 'for_bg_page_cycles/js_bgs/script' + js_counter + '.js');
   document.head.appendChild(myScript);

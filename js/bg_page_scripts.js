@@ -5,7 +5,7 @@
 // change the page with minimal CSS, imitating the early days of HTML with only simple BG color and image changes.
 let html_counter = 0;
 let html_max = 5;
-let insert_style = ""
+let insert_style = "";
 
 function changeStyleHTML() 
 {

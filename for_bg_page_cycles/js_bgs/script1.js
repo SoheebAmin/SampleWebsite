@@ -1,172 +1,172 @@
-(function () {
-    var requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame || function (callback) {
-            window.setTimeout(callback, 1000 / 60);
+// Source: https://codepen.io/mladen___/pen/gbvqBo //
+
+var c = document.getElementById("canvas");
+var ctx = c.getContext("2d");
+
+function resize() {
+    var box = c.getBoundingClientRect();
+    c.width = box.width;
+    c.height = box.height;
+}
+
+var light = {
+    x: 160,
+    y: 200
+}
+
+var colors = ["#f5c156", "#e6616b", "#5cd3ad"];
+
+function drawLight() {
+    ctx.beginPath();
+    ctx.arc(light.x, light.y, 1000, 0, 2 * Math.PI);
+    var gradient = ctx.createRadialGradient(light.x, light.y, 0, light.x, light.y, 1000);
+    gradient.addColorStop(0, "#3b4654");
+    gradient.addColorStop(1, "#2c343f");
+    ctx.fillStyle = gradient;
+    ctx.fill();
+
+    ctx.beginPath();
+    ctx.arc(light.x, light.y, 20, 0, 2 * Math.PI);
+    gradient = ctx.createRadialGradient(light.x, light.y, 0, light.x, light.y, 5);
+    gradient.addColorStop(0, "#fff");
+    gradient.addColorStop(1, "#3b4654");
+    ctx.fillStyle = gradient;
+    ctx.fill();
+}
+
+function Box() {
+    this.half_size = Math.floor((Math.random() * 50) + 1);
+    this.x = Math.floor((Math.random() * c.width) + 1);
+    this.y = Math.floor((Math.random() * c.height) + 1);
+    this.r = Math.random() * Math.PI;
+    this.shadow_length = 2000;
+    this.color = colors[Math.floor((Math.random() * colors.length))];
+  
+    this.getDots = function() {
+
+        var full = (Math.PI * 2) / 4;
+
+
+        var p1 = {
+            x: this.x + this.half_size * Math.sin(this.r),
+            y: this.y + this.half_size * Math.cos(this.r)
         };
-    window.requestAnimationFrame = requestAnimationFrame;
-})();
+        var p2 = {
+            x: this.x + this.half_size * Math.sin(this.r + full),
+            y: this.y + this.half_size * Math.cos(this.r + full)
+        };
+        var p3 = {
+            x: this.x + this.half_size * Math.sin(this.r + full * 2),
+            y: this.y + this.half_size * Math.cos(this.r + full * 2)
+        };
+        var p4 = {
+            x: this.x + this.half_size * Math.sin(this.r + full * 3),
+            y: this.y + this.half_size * Math.cos(this.r + full * 3)
+        };
 
-// Terrain stuff.
-var background = document.getElementById("bgCanvas"),
-    bgCtx = background.getContext("2d"),
-    width = window.innerWidth,
-    height = document.body.offsetHeight;
+        return {
+            p1: p1,
+            p2: p2,
+            p3: p3,
+            p4: p4
+        };
+    }
+    this.rotate = function() {
+        var speed = (60 - this.half_size) / 20;
+        this.r += speed * 0.002;
+        this.x += speed;
+        this.y += speed;
+    }
+    this.draw = function() {
+        var dots = this.getDots();
+        ctx.beginPath();
+        ctx.moveTo(dots.p1.x, dots.p1.y);
+        ctx.lineTo(dots.p2.x, dots.p2.y);
+        ctx.lineTo(dots.p3.x, dots.p3.y);
+        ctx.lineTo(dots.p4.x, dots.p4.y);
+        ctx.fillStyle = this.color;
+        ctx.fill();
 
-(height < 400) ? height = 400 : height;
 
-background.width = width;
-background.height = height;
-
-function Terrain(options) {
-    options = options || {};
-    this.terrain = document.createElement("canvas");
-    this.terCtx = this.terrain.getContext("2d");
-    this.scrollDelay = options.scrollDelay || 90;
-    this.lastScroll = new Date().getTime();
-
-    this.terrain.width = width;
-    this.terrain.height = height;
-    this.fillStyle = options.fillStyle || "#191D4C";
-    this.mHeight = options.mHeight || height;
-
-    // generate
-    this.points = [];
-
-    var displacement = options.displacement || 140,
-        power = Math.pow(2, Math.ceil(Math.log(width) / (Math.log(2))));
-
-    // set the start height and end height for the terrain
-    this.points[0] = this.mHeight;//(this.mHeight - (Math.random() * this.mHeight / 2)) - displacement;
-    this.points[power] = this.points[0];
-
-    // create the rest of the points
-    for (var i = 1; i < power; i *= 2) {
-        for (var j = (power / i) / 2; j < power; j += power / i) {
-            this.points[j] = ((this.points[j - (power / i) / 2] + this.points[j + (power / i) / 2]) / 2) + Math.floor(Math.random() * -displacement + displacement);
+        if (this.y - this.half_size > c.height) {
+            this.y -= c.height + 100;
         }
-        displacement *= 0.6;
-    }
-
-    document.body.appendChild(this.terrain);
-}
-
-Terrain.prototype.update = function () {
-    // draw the terrain
-    this.terCtx.clearRect(0, 0, width, height);
-    this.terCtx.fillStyle = this.fillStyle;
-    
-    if (new Date().getTime() > this.lastScroll + this.scrollDelay) {
-        this.lastScroll = new Date().getTime();
-        this.points.push(this.points.shift());
-    }
-
-    this.terCtx.beginPath();
-    for (var i = 0; i <= width; i++) {
-        if (i === 0) {
-            this.terCtx.moveTo(0, this.points[0]);
-        } else if (this.points[i] !== undefined) {
-            this.terCtx.lineTo(i, this.points[i]);
+        if (this.x - this.half_size > c.width) {
+            this.x -= c.width + 100;
         }
     }
+    this.drawShadow = function() {
+        var dots = this.getDots();
+        var angles = [];
+        var points = [];
 
-    this.terCtx.lineTo(width, this.terrain.height);
-    this.terCtx.lineTo(0, this.terrain.height);
-    this.terCtx.lineTo(0, this.points[0]);
-    this.terCtx.fill();
-}
+        for (dot in dots) {
+            var angle = Math.atan2(light.y - dots[dot].y, light.x - dots[dot].x);
+            var endX = dots[dot].x + this.shadow_length * Math.sin(-angle - Math.PI / 2);
+            var endY = dots[dot].y + this.shadow_length * Math.cos(-angle - Math.PI / 2);
+            angles.push(angle);
+            points.push({
+                endX: endX,
+                endY: endY,
+                startX: dots[dot].x,
+                startY: dots[dot].y
+            });
+        };
 
-
-// Second canvas used for the stars
-bgCtx.fillStyle = '#05004c';
-bgCtx.fillRect(0, 0, width, height);
-
-// stars
-function Star(options) {
-    this.size = Math.random() * 2;
-    this.speed = Math.random() * .05;
-    this.x = options.x;
-    this.y = options.y;
-}
-
-Star.prototype.reset = function () {
-    this.size = Math.random() * 2;
-    this.speed = Math.random() * .05;
-    this.x = width;
-    this.y = Math.random() * height;
-}
-
-Star.prototype.update = function () {
-    this.x -= this.speed;
-    if (this.x < 0) {
-        this.reset();
-    } else {
-        bgCtx.fillRect(this.x, this.y, this.size, this.size);
+        for (var i = points.length - 1; i >= 0; i--) {
+            var n = i == 3 ? 0 : i + 1;
+            ctx.beginPath();
+            ctx.moveTo(points[i].startX, points[i].startY);
+            ctx.lineTo(points[n].startX, points[n].startY);
+            ctx.lineTo(points[n].endX, points[n].endY);
+            ctx.lineTo(points[i].endX, points[i].endY);
+            ctx.fillStyle = "#2c343f";
+            ctx.fill();
+        };
     }
 }
 
-function ShootingStar() {
-    this.reset();
+var boxes = [];
+
+function draw() {
+    ctx.clearRect(0, 0, c.width, c.height);
+    drawLight();
+
+    for (var i = 0; i < boxes.length; i++) {
+        boxes[i].rotate();
+        boxes[i].drawShadow();
+    };
+    for (var i = 0; i < boxes.length; i++) {
+        collisionDetection(i)
+        boxes[i].draw();
+    };
+    requestAnimationFrame(draw);
 }
 
-ShootingStar.prototype.reset = function () {
-    this.x = Math.random() * width;
-    this.y = 0;
-    this.len = (Math.random() * 80) + 10;
-    this.speed = (Math.random() * 10) + 6;
-    this.size = (Math.random() * 1) + 0.1;
-    // this is used so the shooting stars arent constant
-    this.waitTime = new Date().getTime() + (Math.random() * 3000) + 500;
-    this.active = false;
+resize();
+draw();
+
+while (boxes.length < 14) {
+    boxes.push(new Box());
 }
 
-ShootingStar.prototype.update = function () {
-    if (this.active) {
-        this.x -= this.speed;
-        this.y += this.speed;
-        if (this.x < 0 || this.y >= height) {
-            this.reset();
-        } else {
-            bgCtx.lineWidth = this.size;
-            bgCtx.beginPath();
-            bgCtx.moveTo(this.x, this.y);
-            bgCtx.lineTo(this.x + this.len, this.y - this.len);
-            bgCtx.stroke();
-        }
-    } else {
-        if (this.waitTime < new Date().getTime()) {
-            this.active = true;
-        }
-    }
+window.onresize = resize;
+c.onmousemove = function(e) {
+    light.x = e.offsetX == undefined ? e.layerX : e.offsetX;
+    light.y = e.offsetY == undefined ? e.layerY : e.offsetY;
 }
 
-var entities = [];
 
-// init the stars
-for (var i = 0; i < height; i++) {
-    entities.push(new Star({
-        x: Math.random() * width,
-        y: Math.random() * height
-    }));
+function collisionDetection(b){
+	for (var i = boxes.length - 1; i >= 0; i--) {
+		if(i != b){	
+			var dx = (boxes[b].x + boxes[b].half_size) - (boxes[i].x + boxes[i].half_size);
+			var dy = (boxes[b].y + boxes[b].half_size) - (boxes[i].y + boxes[i].half_size);
+			var d = Math.sqrt(dx * dx + dy * dy);
+			if (d < boxes[b].half_size + boxes[i].half_size) {
+			    boxes[b].half_size = boxes[b].half_size > 1 ? boxes[b].half_size-=1 : 1;
+			    boxes[i].half_size = boxes[i].half_size > 1 ? boxes[i].half_size-=1 : 1;
+			}
+		}
+	}
 }
-
-// Add 2 shooting stars that just cycle.
-entities.push(new ShootingStar());
-entities.push(new ShootingStar());
-entities.push(new Terrain({mHeight : (height/2)-120}));
-entities.push(new Terrain({displacement : 120, scrollDelay : 50, fillStyle : "rgb(17,20,40)", mHeight : (height/2)-60}));
-entities.push(new Terrain({displacement : 100, scrollDelay : 20, fillStyle : "rgb(10,10,5)", mHeight : height/2}));
-
-//animate background
-function animate() {
-    bgCtx.fillStyle = '#110E19';
-    bgCtx.fillRect(0, 0, width, height);
-    bgCtx.fillStyle = '#ffffff';
-    bgCtx.strokeStyle = '#ffffff';
-
-    var entLen = entities.length;
-
-    while (entLen--) {
-        entities[entLen].update();
-    }
-    requestAnimationFrame(animate);
-}
-animate();

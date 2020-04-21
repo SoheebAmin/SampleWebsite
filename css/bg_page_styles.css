@@ -1,3 +1,10 @@
+#overlay
+{
+  text-align: center;
+  position: absolute;
+  width: 100%;
+}
+
 #bg_text
 {   
     font-family: gergia, serif;
@@ -7,7 +14,9 @@
 
 #top_right
 {
-   position:absolute; top: 8ex; right: -130ex;
+    position:absolute; 
+    top:50px; 
+    left:1350px;
 }
 
 #button_adjust

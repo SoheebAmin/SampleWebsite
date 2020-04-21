@@ -32,7 +32,9 @@ h4
 /* Place the any element (in this case, the modal explain button) at the top right of the website. */
 #top_right
 {
-   position:absolute; top: 8ex; right: -120ex;
+    position:absolute; 
+    top:50px; 
+    left:1350px;
 }
 
 #button_adjust

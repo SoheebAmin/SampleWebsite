@@ -30,8 +30,8 @@
   <script src="js/bg_page_scripts.js"></script>
   
   <!-- CSS and JS references updated using JS with the button on the page -->
-  <link rel="stylesheet" href="for_bg_page_cycles/css_bgs/stylesheet0.css" id="stylesheet">
-  <script src="for_bg_page_cycles/js_bgs/script0.js" id="script"></script>
+  <link rel="stylesheet" href="for_bg_page_cycles/js_bgs/stylesheet0.css" id="stylesheet">
+  <script defer src="for_bg_page_cycles/js_bgs/script0.js" id="script"></script>
 
 </head>
 
@@ -44,36 +44,28 @@
     <a href="bg.html" class="w3-button w3-bar-item">Background Effects</a>
     <a href="js_page.html" class="w3-button w3-bar-item">Fun with Javascript</a>
   </nav>
-
-  <!--text to display-->
-  <div style="text-align: center">
-    
-    <br><br><br><br><br>
-
-    <h1 id="bg_text">Cycle through backgrounds that use different languages.</h1> 
-    
-    <br><br>
-
-    <button type="button" class="btn btn-danger" onclick="changeStyleHTML();return false">
-    HTML Only</button>
-
-    <br><br><br>
-
-    <button type="button" class="btn btn-danger" onclick="changeStyleCSS();return false">
-    HTML and CSS</button>
-
-    <br><br><br>
-
-    <button type="button" class="btn btn-danger" onclick="add_script();return false">
-    HTML, CSS, and Javascript</button>
-  </div>
-
-
-  <canvas id="bgCanvas"></canvas>
+ 
+  <div id="container">
+       <!--text to display-->
+       <div id="overlay">
+        <br><br><br><br><br>
+        <h1 id="bg_text">Cycle through backgrounds that use different languages.</h1> 
+        <br><br>
+        <button type="button" class="btn btn-danger" onclick="changeStyleHTML();return false">
+        HTML Only</button>
+        <br><br><br>
+        <button type="button" class="btn btn-danger" onclick="changeStyleCSS();return false">
+        HTML and CSS</button>
+        <br><br><br>
+        <button type="button" class="btn btn-danger" onclick="add_script();return false">
+        HTML, CSS, and Javascript</button>
+      </div>
+    <canvas id="canvas"></canvas>
+    </div>
 
   <!-- JS will inject the appropriate HTML for each stylesheet here-->
   <div id = inject_html></div>
-
+  
   <!-- Modal button and its content-->
   <div class="container" id="top_right">
     <button id="button_adjust" type="button" class="btn btn-info btn-lg" data-toggle="modal"

@@ -78,9 +78,9 @@ function changeStyleCSS()
 
   // inject html based on the stylesheet to load
   $(function()
-{
+  {
     $("#inject_html").load("for_bg_page_cycles/css_bgs/html_for_" + style_counter + ".html");
-});
+  });
 
   // sets the new stylesheet
   document.getElementById('stylesheet').href = "for_bg_page_cycles/css_bgs/stylesheet" + style_counter + ".css";
@@ -89,7 +89,7 @@ function changeStyleCSS()
 
 // Adds a new CSS and Javascript source
 let js_counter = 0;
-let js_max = 4;
+let js_max = 5;
 
 function add_script()
 {
@@ -107,7 +107,11 @@ function add_script()
   document.getElementById('body_id').style.removeProperty("background-image");
   document.getElementById('bg_text').style.removeProperty("color");
 
+  // adds
   var myScript = document.createElement('script');
   myScript.setAttribute('src', 'for_bg_page_cycles/js_bgs/script' + js_counter + '.js');
   document.head.appendChild(myScript);
+
+  // sets the new stylesheet
+  document.getElementById('stylesheet').href = "for_bg_page_cycles/js_bgs/stylesheet" + js_counter + ".css";
 }

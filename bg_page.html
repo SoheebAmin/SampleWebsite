@@ -8,8 +8,6 @@
   pages, and the CSS and/or JS for the CSS + JS pages. All of this is done by using JQuery to update the HTML, CSS, and 
   JS scripts on this page -->
 
-
-
 <!doctype html>
 
 <html lang="en">
@@ -49,22 +47,29 @@
 
   <!--text to display-->
   <div style="text-align: center">
+    
     <br><br><br><br><br>
-    <h1 id="bg_text">Cycle through backgrounds that use different languages.</h1> <br><br>
+
+    <h1 id="bg_text">Cycle through backgrounds that use different languages.</h1> 
+    
+    <br><br>
+
     <button type="button" class="btn btn-danger" onclick="changeStyleHTML();return false">
-      HTML Only</button>
+    HTML Only</button>
 
-    <div style="text-align: center">
-      <br><br><br>
-      <button type="button" class="btn btn-danger" onclick="changeStyleCSS();return false">
-        HTML and CSS</button>
+    <br><br><br>
 
-      <div style="text-align: center">
-        <br><br><br>
-        <button type="button" class="btn btn-danger" onclick="add_script();return false">
-          HTML, CSS, and Javascript</button>
-      </div>
+    <button type="button" class="btn btn-danger" onclick="changeStyleCSS();return false">
+    HTML and CSS</button>
 
+    <br><br><br>
+
+    <button type="button" class="btn btn-danger" onclick="add_script();return false">
+    HTML, CSS, and Javascript</button>
+  </div>
+
+
+  <canvas id="bgCanvas"></canvas>
 
   <!-- JS will inject the appropriate HTML for each stylesheet here-->
   <div id = inject_html></div>

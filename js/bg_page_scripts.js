@@ -110,8 +110,9 @@ function add_script()
   // sets the new stylesheet (Setting it before the JS script matters! Otherwise I've seen funky behavior!)
   document.getElementById('stylesheet').href = "for_bg_page_cycles/js_bgs/stylesheet" + js_counter + ".css";
 
-  // adds
+  // adds new Javascript source
   var myScript = document.createElement('script');
   myScript.setAttribute('src', 'for_bg_page_cycles/js_bgs/script' + js_counter + '.js');
+  myScript.setAttribute('id', 'script');
   document.head.appendChild(myScript);
 }

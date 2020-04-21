@@ -107,11 +107,11 @@ function add_script()
   document.getElementById('body_id').style.removeProperty("background-image");
   document.getElementById('bg_text').style.removeProperty("color");
 
+  // sets the new stylesheet (Setting it before the JS script matters! Otherwise I've seen funky behavior!)
+  document.getElementById('stylesheet').href = "for_bg_page_cycles/js_bgs/stylesheet" + js_counter + ".css";
+
   // adds
   var myScript = document.createElement('script');
   myScript.setAttribute('src', 'for_bg_page_cycles/js_bgs/script' + js_counter + '.js');
   document.head.appendChild(myScript);
-
-  // sets the new stylesheet
-  document.getElementById('stylesheet').href = "for_bg_page_cycles/js_bgs/stylesheet" + js_counter + ".css";
 }

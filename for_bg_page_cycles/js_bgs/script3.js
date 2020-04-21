@@ -1,1 +1,0 @@
-alert("you've loaded script 3")

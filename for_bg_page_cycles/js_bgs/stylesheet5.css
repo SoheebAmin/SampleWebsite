@@ -1,4 +1,21 @@
-canvas {
-    display: block; 
+body {
+    display: flex;
+    height: 100vh;
+    background-color: #111;
   }
-  
+  canvas {
+   margin: auto;
+  }
+
+span {
+    color: #777;
+
+    top: 20px;
+    left: 20px;
+    user-select: none;
+}
+
+  #bg_text{   
+    font-family: gergia, serif;
+    color: white;
+}

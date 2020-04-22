@@ -1,21 +1,4 @@
-body {
-    display: flex;
-    height: 100vh;
-    background-color: #111;
+canvas {
+    display: block; 
   }
-  canvas {
-   margin: auto;
-  }
-
-span {
-    color: #777;
-
-    top: 20px;
-    left: 20px;
-    user-select: none;
-}
-
-  #bg_text{   
-    font-family: gergia, serif;
-    color: white;
-}
+  

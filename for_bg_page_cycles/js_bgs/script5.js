@@ -1,139 +1,173 @@
+// There's no way to unload Javascript without a refresh, so a major variable or variables are killed to allow a new script. 
+// This is no way a practical or sutainable practice, but it works for this simple demontration of swapping out JS scripts.
 
+ctx = 0;
 
-var c = document.getElementById('canvas'),
-    ctx = c.getContext('2d'),
-    cw = c.width = window.innerWidth,
-    ch = c.height = window.innerHeight,
-    points = [],
-    tick = 0,
-    opt = {
-      count: 5,
-      range: {
-        x: 20,
-        y: 80
-      },
-      duration: {
-        min: 20,
-        max: 40
-      },
-      thickness: 10,
-      strokeColor: '#444',
-      level: .35,
-      curved: true
-    },
-    rand = function(min, max){
-        return Math.floor( (Math.random() * (max - min + 1) ) + min);
-    },
-    ease = function (t, b, c, d) {
-	    if ((t/=d/2) < 1) return c/2*t*t + b;
-	    return -c/2 * ((--t)*(t-2) - 1) + b;
-    };
+// Source: https://codepen.io/hakimel/pen/QdWpRv
 
-ctx.lineJoin = 'round';
-ctx.lineWidth = opt.thickness;
-ctx.strokeStyle = opt.strokeColor;
+var ctx = document.querySelector( 'canvas' );
+var context = ctx.getContext( '2d' );
 
-var Point = function(config){
-  this.anchorX = config.x;
-  this.anchorY = config.y;
-  this.x = config.x;
-  this.y = config.y;
-  this.setTarget();  
-};
+var time = 0,
+    velocity = 0.1,
+    velocityTarget = 0.1,
+    width,
+    height,
+    lastX,
+    lastY;
 
-Point.prototype.setTarget = function(){
-  this.initialX = this.x;
-  this.initialY = this.y;
-  this.targetX = this.anchorX + rand(0, opt.range.x * 2) - opt.range.x;
-  this.targetY = this.anchorY + rand(0, opt.range.y * 2) - opt.range.y;
-  this.tick = 0;
-  this.duration = rand(opt.duration.min, opt.duration.max);
+var MAX_OFFSET = 400;
+var SPACING = 4;
+var POINTS = MAX_OFFSET / SPACING;
+var PEAK = MAX_OFFSET * 0.25;
+var POINTS_PER_LAP = 6;
+var SHADOW_STRENGTH = 6;
+
+setup();
+
+function setup() {
+
+  resize();
+  step();
+  
+  window.addEventListener( 'resize', resize );
+  window.addEventListener( 'mousedown', onMouseDown );
+  document.addEventListener( 'touchstart', onTouchStart );
+  
 }
+
+function resize() {
+
+  width = ctx.width = window.innerWidth;
+  height = ctx.height = window.innerHeight;
   
-Point.prototype.update = function(){
-  var dx = this.targetX - this.x;
-  var dy = this.targetY - this.y;
-  var dist = Math.sqrt(dx * dx + dy * dy);
+}
+
+function step() {
   
-  if(Math.abs(dist) <= 0){
-    this.setTarget();
-  } else {       
-    var t = this.tick;
-    var b = this.initialY;
-    var c = this.targetY - this.initialY;
-    var d = this.duration;
-    this.y = ease(t, b, c, d);
-    
-    b = this.initialX;
-    c = this.targetX - this.initialX;
-    d = this.duration;
-    this.x = ease(t, b, c, d);
+  time += velocity;
+  velocity += ( velocityTarget - velocity ) * 0.3;
   
-    this.tick++;
-  }
-};
-    
-Point.prototype.render = function(){
-  ctx.beginPath();
-  ctx.arc(this.x, this.y, 3, 0, Math.PI * 2, false);
-  ctx.fillStyle = '#000';
-  ctx.fill();
-};
-
-var updatePoints = function(){
-  var i = points.length;
-  while(i--){
-    points[i].update();
-  }
-};
-
-var renderPoints = function(){
-  var i = points.length;
-  while(i--){
-    points[i].render();
-  }
-};
-
-var renderShape = function(){
-  ctx.beginPath();
-  var pointCount = points.length;
-  ctx.moveTo(points[0].x, points[0].y);	  
-  var i;
-  for (i = 0; i < pointCount - 1; i++) {
-    var c = (points[i].x + points[i + 1].x) / 2;
-    var d = (points[i].y + points[i + 1].y) / 2;
-    ctx.quadraticCurveTo(points[i].x, points[i].y, c, d);
-  }
-  ctx.lineTo(-opt.range.x - opt.thickness, ch + opt.thickness);
-  ctx.lineTo(cw + opt.range.x + opt.thickness, ch + opt.thickness);
-  ctx.closePath();   
-  ctx.fillStyle = 'hsl('+(tick/2)+', 80%, 60%)';
-  ctx.fill();  
-  ctx.stroke();
-};
-
-var clear = function(){
-  ctx.clearRect(0, 0, cw, ch);
-};
-
-var loop = function(){
-  window.requestAnimFrame(loop, c);
-  tick++;
   clear();
-  updatePoints();
-  renderShape();
-  //renderPoints();
-};
-
-var i = opt.count + 2;
-var spacing = (cw + (opt.range.x * 2)) / (opt.count-1);
-while(i--){
-  points.push(new Point({
-    x: (spacing * (i - 1)) - opt.range.x,
-    y: ch - (ch * opt.level)
-  }));
+  render();
+  
+  requestAnimationFrame( step );
+  
 }
 
-window.requestAnimFrame=function(){return window.requestAnimationFrame||window.webkitRequestAnimationFrame||window.mozRequestAnimationFrame||window.oRequestAnimationFrame||window.msRequestAnimationFrame||function(a){window.setTimeout(a,1E3/60)}}();
+function clear() {
+  
+  context.clearRect( 0, 0, width, height );
 
-loop();
+}
+
+function render() {
+  
+  var x, y,
+      cx = width/2,
+      cy = height/2;
+
+  context.globalCompositeOperation = 'lighter';
+  context.strokeStyle = '#fff';
+  context.shadowColor = '#fff';
+  context.lineWidth = 2;
+  context.beginPath();
+
+  for( var i = POINTS; i > 0; i -- ) {
+    
+    var value = i * SPACING + ( time % SPACING );
+    
+    var ax = Math.sin( value/POINTS_PER_LAP ) * Math.PI,
+        ay = Math.cos( value/POINTS_PER_LAP ) * Math.PI;
+
+    x = ax * value,
+    y = ay * value * 0.35;
+    
+    var o = 1 - ( Math.min( value, PEAK ) / PEAK );
+    
+    y -= Math.pow( o, 2 ) * 200;
+    y += 200 * value / MAX_OFFSET;
+    y += x / cx * width * 0.1;
+    
+    context.globalAlpha = 1 - ( value / MAX_OFFSET );
+    context.shadowBlur = SHADOW_STRENGTH * o;
+  
+    context.lineTo( cx + x, cy + y );
+    context.stroke();
+ 
+    context.beginPath();
+    context.moveTo( cx + x, cy + y );
+    
+  }
+
+  context.lineTo( cx, cy - 200 );
+  context.lineTo( cx, 0 );
+  context.stroke();
+  
+}
+
+function onMouseDown( event ) {
+  
+  lastX = event.clientX;
+  lastY = event.clientY;
+  
+  document.addEventListener( 'mousemove', onMouseMove );
+  document.addEventListener( 'mouseup', onMouseUp );
+  
+}
+
+function onMouseMove( event ) {
+  
+  var vx = ( event.clientX - lastX ) / 100;
+  var vy = ( event.clientY - lastY ) / 100;
+  
+  if( event.clientY < height/2 ) vx *= -1;
+  if( event.clientX > width/2 ) vy *= -1;
+  
+  velocityTarget = vx + vy;
+  
+  lastX = event.clientX;
+  lastY = event.clientY;
+  
+}
+
+function onMouseUp( event ) {
+  
+  document.removeEventListener( 'mousemove', onMouseMove );
+  document.removeEventListener( 'mouseup', onMouseUp );
+  
+}
+
+function onTouchStart( event ) {
+  
+  event.preventDefault();
+  
+  lastX = event.touches[0].clientX;
+  lastY = event.touches[0].clientY;
+  
+  document.addEventListener( 'touchmove', onTouchMove );
+  document.addEventListener( 'touchend', onTouchEnd );
+  
+}
+
+function onTouchMove( event ) {
+  
+  var vx = ( event.touches[0].clientX - lastX ) / 100;
+  var vy = ( event.touches[0].clientY - lastY ) / 100;
+  
+  if( event.touches[0].clientY < height/2 ) vx *= -1;
+  if( event.touches[0].clientX > width/2 ) vy *= -1;
+  
+  velocityTarget = vx + vy;
+  
+  lastX = event.touches[0].clientX;
+  lastY = event.touches[0].clientY;
+  
+}
+
+function onTouchEnd( event ) {
+  
+  document.removeEventListener( 'touchmove', onTouchMove );
+  document.removeEventListener( 'touchend', onTouchEnd );
+  
+}

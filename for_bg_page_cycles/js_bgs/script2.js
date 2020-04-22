@@ -1,9 +1,7 @@
-// There's no way to unload Javascript without a refresh. This is super bad practice, but the only way I know to pull off
-// this page as intended. The variables that make the script work are killed if the js_counter is not on this script number. 
+// There's no way to unload Javascript without a refresh, so a major variable or variables are killed to allow a new script. 
+// This is no way a practical or sutainable practice, but it works for this simple demontration of swapping out JS scripts.
 
-boxes = 0;
-colors = 0;
-light = 0;
+ctx = 0;
 
 // Source: https://codepen.io/pawelqcm/pen/oxPYox
 

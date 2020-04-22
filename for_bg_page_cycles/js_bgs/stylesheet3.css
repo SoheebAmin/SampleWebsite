@@ -1,0 +1,13 @@
+body {
+    padding: 0;
+    background-color: black;
+}
+
+canvas {
+	display: block;
+}
+
+#bg_text{   
+    font-family: gergia, serif;
+    color: white;
+}

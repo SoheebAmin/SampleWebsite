@@ -7,8 +7,8 @@ MOUSE_RADIUS = 0;
 
 // Source: https://codepen.io/hakimel/pen/QdWpRv
 
-var canvas = document.querySelector( 'canvas' );
-var context = canvas.getContext( '2d' );
+var ctx = document.querySelector( 'canvas' );
+var context = ctx.getContext( '2d' );
 
 var time = 0,
     velocity = 0.1,
@@ -40,8 +40,8 @@ function setup() {
 
 function resize() {
 
-  width = canvas.width = window.innerWidth;
-  height = canvas.height = window.innerHeight;
+  width = ctx.width = window.innerWidth;
+  height = ctx.height = window.innerHeight;
   
 }
 

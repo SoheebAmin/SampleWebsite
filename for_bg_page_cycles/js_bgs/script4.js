@@ -1,124 +1,118 @@
-// There's no way to unload Javascript without a refresh. This is super bad practice, but the only way I know to pull off
-// this page as intended. The variables that make the script work are killed using the updated script number.
+// There's no way to unload Javascript without a refresh, so a major variable or variables are killed to allow a new script. 
+// This is no way a practical or sutainable practice, but it works for this simple demontration of swapping out JS scripts.
 
-ctx = 0;
+canvas = 0;
 
-// Source: 
-(function () {
-    var COLORS, Confetti, NUM_CONFETTI, PI_2, canvas, confetti, context, drawCircle, i, range, resizeWindow, xpos;
-  
-    NUM_CONFETTI = 350;
-  
-    COLORS = [[85, 71, 106], [174, 61, 99], [219, 56, 83], [244, 92, 68], [248, 182, 70]];
-  
-    PI_2 = 2 * Math.PI;
-  
-    canvas = document.getElementById("world");
-  
-    context = canvas.getContext("2d");
-  
-    window.w = 0;
-  
-    window.h = 0;
-  
-    resizeWindow = function () {
-      window.w = canvas.width = window.innerWidth;
-      return window.h = canvas.height = window.innerHeight;
-    };
-  
-    window.addEventListener('resize', resizeWindow, false);
-  
-    window.onload = function () {
-      return setTimeout(resizeWindow, 0);
-    };
-  
-    range = function (a, b) {
-      return (b - a) * Math.random() + a;
-    };
-  
-    drawCircle = function (x, y, r, style) {
-      context.beginPath();
-      context.arc(x, y, r, 0, PI_2, false);
-      context.fillStyle = style;
-      return context.fill();
-    };
-  
-    xpos = 0.5;
-  
-    document.onmousemove = function (e) {
-      return xpos = e.pageX / w;
-    };
-  
-    window.requestAnimationFrame = function () {
-      return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame || function (callback) {
-        return window.setTimeout(callback, 1000 / 60);
-      };
-    }();
-  
-    Confetti = class Confetti {
-      constructor() {
-        this.style = COLORS[~~range(0, 5)];
-        this.rgb = `rgba(${this.style[0]},${this.style[1]},${this.style[2]}`;
-        this.r = ~~range(2, 6);
-        this.r2 = 2 * this.r;
-        this.replace();
-      }
-  
-      replace() {
-        this.opacity = 0;
-        this.dop = 0.03 * range(1, 4);
-        this.x = range(-this.r2, w - this.r2);
-        this.y = range(-20, h - this.r2);
-        this.xmax = w - this.r;
-        this.ymax = h - this.r;
-        this.vx = range(0, 2) + 8 * xpos - 5;
-        return this.vy = 0.7 * this.r + range(-1, 1);
-      }
-  
-      draw() {
-        var ref;
-        this.x += this.vx;
-        this.y += this.vy;
-        this.opacity += this.dop;
-        if (this.opacity > 1) {
-          this.opacity = 1;
-          this.dop *= -1;
-        }
-        if (this.opacity < 0 || this.y > this.ymax) {
-          this.replace();
-        }
-        if (!(0 < (ref = this.x) && ref < this.xmax)) {
-          this.x = (this.x + this.xmax) % this.xmax;
-        }
-        return drawCircle(~~this.x, ~~this.y, this.r, `${this.rgb},${this.opacity})`);
-      }};
-  
-  
-  
-    confetti = function () {
-      var j, ref, results;
-      results = [];
-      for (i = j = 1, ref = NUM_CONFETTI; 1 <= ref ? j <= ref : j >= ref; i = 1 <= ref ? ++j : --j) {
-        results.push(new Confetti());
-      }
-      return results;
-    }();
-  
-    window.step = function () {
-      var c, j, len, results;
-      requestAnimationFrame(step);
-      context.clearRect(0, 0, w, h);
-      results = [];
-      for (j = 0, len = confetti.length; j < len; j++) {
-        c = confetti[j];
-        results.push(c.draw());
-      }
-      return results;
-    };
-  
-    step();
-  
-  }).call(this);
-  
-  
-  //# sourceURL=coffeescript
+// Source: https://codepen.io/dudleystorey/pen/NbNjjX
+
+let resizeReset = function() {
+	w = canvasBody.width = window.innerWidth;
+	h = canvasBody.height = window.innerHeight;
+}
+
+opts = { 
+	particleColor: "rgb(200,200,200)",
+	lineColor: "rgb(200,200,200)",
+	particleAmount: 30,
+	defaultSpeed: 1,
+	variantSpeed: 1,
+	defaultRadius: 2,
+	variantRadius: 2,
+	linkRadius: 200,
+};
+
+window.addEventListener("resize", function(){
+	deBouncer();
+});
+
+let deBouncer = function() {
+    clearTimeout(tid);
+    tid = setTimeout(function() {
+        resizeReset();
+    }, delay);
+};
+
+let checkDistance = function(x1, y1, x2, y2){ 
+	return Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
+};
+
+let linkPoints = function(point1, hubs){ 
+	for (let i = 0; i < hubs.length; i++) {
+		let distance = checkDistance(point1.x, point1.y, hubs[i].x, hubs[i].y);
+		let opacity = 1 - distance / opts.linkRadius;
+		if (opacity > 0) { 
+			drawArea.lineWidth = 0.5;
+			drawArea.strokeStyle = `rgba(${rgb[0]}, ${rgb[1]}, ${rgb[2]}, ${opacity})`;
+			drawArea.beginPath();
+			drawArea.moveTo(point1.x, point1.y);
+			drawArea.lineTo(hubs[i].x, hubs[i].y);
+			drawArea.closePath();
+			drawArea.stroke();
+		}
+	}
+}
+
+Particle = function(xPos, yPos){ 
+	this.x = Math.random() * w; 
+	this.y = Math.random() * h;
+	this.speed = opts.defaultSpeed + Math.random() * opts.variantSpeed; 
+	this.directionAngle = Math.floor(Math.random() * 360); 
+	this.color = opts.particleColor;
+	this.radius = opts.defaultRadius + Math.random() * opts. variantRadius; 
+	this.vector = {
+		x: Math.cos(this.directionAngle) * this.speed,
+		y: Math.sin(this.directionAngle) * this.speed
+	};
+	this.update = function(){ 
+		this.border(); 
+		this.x += this.vector.x; 
+		this.y += this.vector.y; 
+	};
+	this.border = function(){ 
+		if (this.x >= w || this.x <= 0) { 
+			this.vector.x *= -1;
+		}
+		if (this.y >= h || this.y <= 0) {
+			this.vector.y *= -1;
+		}
+		if (this.x > w) this.x = w;
+		if (this.y > h) this.y = h;
+		if (this.x < 0) this.x = 0;
+		if (this.y < 0) this.y = 0;	
+	};
+	this.draw = function(){ 
+		drawArea.beginPath();
+		drawArea.arc(this.x, this.y, this.radius, 0, Math.PI*2);
+		drawArea.closePath();
+		drawArea.fillStyle = this.color;
+		drawArea.fill();
+	};
+};
+
+function setup(){ 
+	particles = [];
+	resizeReset();
+	for (let i = 0; i < opts.particleAmount; i++){
+		particles.push( new Particle() );
+	}
+	window.requestAnimationFrame(loop);
+}
+
+function loop(){ 
+	window.requestAnimationFrame(loop);
+	drawArea.clearRect(0,0,w,h);
+	for (let i = 0; i < particles.length; i++){
+		particles[i].update();
+		particles[i].draw();
+	}
+	for (let i = 0; i < particles.length; i++){
+		linkPoints(particles[i], particles);
+	}
+}
+
+const canvasBody = document.getElementById("canvas"),
+drawArea = canvasBody.getContext("2d");
+let delay = 200, tid,
+rgb = opts.lineColor.match(/\d+/g);
+resizeReset();
+setup();

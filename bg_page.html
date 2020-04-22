@@ -30,39 +30,40 @@
   <script src="js/bg_page_scripts.js"></script>
   
   <!-- CSS and JS references updated using JS with the button on the page -->
-  <link rel="stylesheet" href="for_bg_page_cycles/js_bgs/script4.css" id="script">
-  <link rel="stylesheet" href="for_bg_page_cycles/js_bgs/stylesheet4.css" id="stylesheet">
-
+  <link rel="stylesheet" href="for_bg_page_cycles/js_bgs/stylesheet0.css" id="stylesheet">
 
 </head>
 
 <body id="body_id">
   
+  <div id="container">
+
   <!-- The Navigation bar -->
   <nav class="w3-bar w3-black" class="navbar" style="font-family: verdana">
     <a href="index.html" class="w3-button w3-bar-item">Homepage</a>
     <a href="forms.html" class="w3-button w3-bar-item">Fill Forms</a>
-    <a href="bg.html" class="w3-button w3-bar-item">Background Effects</a>
+    <a href="bg_page.html" class="w3-button w3-bar-item">Background Effects</a>
     <a href="js_page.html" class="w3-button w3-bar-item">Fun with Javascript</a>
   </nav>
  
-  <div id="container">
+ 
        <!--text to display-->
        <div id="overlay">
         <br><br><br><br><br>
         <h1 id="bg_text">Cycle through backgrounds that use different languages.</h1> 
         <br><br>
         <button type="button" class="btn btn-danger" onclick="changeStyleHTML();return false">
-        HTML Only</button>
+        HTML</button>
         <br><br><br>
         <button type="button" class="btn btn-danger" onclick="changeStyleCSS();return false">
-        HTML and CSS</button>
+         CSS</button>
         <br><br><br>
         <button type="button" class="btn btn-danger" onclick="add_script();return false">
-        HTML, CSS, and Javascript</button>
+        CSS + Javascript</button>
       </div>
     <canvas id="canvas"></canvas>
     </div>
+
 
   <!-- JS will inject the appropriate HTML for each stylesheet here-->
   <div id = inject_html></div>

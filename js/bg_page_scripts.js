@@ -9,20 +9,25 @@ let insert_style = "";
 
 function changeStyleHTML() 
 {
-  // restores default stylesheet. Removing this allows these bgs to mix with the effects of the CSS button.
+  // restores default stylesheet.
   document.getElementById('stylesheet').href = "for_bg_page_cycles/css_bgs/stylesheet0.css";
   
-  // cycles through a counter to 4 for the different choices
+  // cycles through a counter to 5 for the different choices
   if (html_counter != html_max)
   {
     html_counter++;
   }
   else
   {
-    html_counter = 1;
+    html_counter = 0;
   }
 
   // uses the counter's value to select a text and bg color/style
+  if (html_counter == 0)
+  {
+    insert_style = "background-color: white";
+    document.getElementById('bg_text').style = "color: black";
+  }
   if (html_counter == 1)
   {
     insert_style = "background-color: silver";
@@ -68,7 +73,7 @@ function changeStyleCSS()
   }
   else
   {
-    style_counter = 1;
+    style_counter = 0;
   }
 
   // removes any selections made from the HTML button
@@ -99,7 +104,7 @@ function add_script()
   }
   else
   {
-    js_counter = 1;
+    js_counter = 0;
   }
 
   // removes any selections made from the HTML button

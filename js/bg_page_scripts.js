@@ -13,6 +13,7 @@ function changeStyleHTML()
   {
     localStorage.setItem('html_refresh','first_bg');
     location.reload(); 
+    return 0;
   }
 
   // removes css stylesheet.
@@ -75,6 +76,14 @@ let stylesheets_max = 5;
 
 function changeStyleCSS() 
 {
+  // removes any canvas animation (undo of the CSS + Javascript Button)
+  if (js_counter != 0)
+  {
+    localStorage.setItem('css_refresh','first_bg');
+    location.reload(); 
+    return 0;
+  }
+
   if (style_counter != stylesheets_max)
   {
     style_counter++;
@@ -82,13 +91,6 @@ function changeStyleCSS()
   else
   {
     style_counter = 0;
-  }
-
-  // removes any canvas animation (undo of the CSS + Javascript Button)
-  if (js_counter != 0)
-  {
-    localStorage.setItem('css_refresh','first_bg');
-    location.reload(); 
   }
   if (html_counter != 0)
   {
@@ -148,13 +150,13 @@ function add_script()
 // checks local storage if see if there's a background to load. (CURRENTLY NOT WORKING)
 if (localStorage.getItem('html_refresh') == 'first_bg' & js_counter == 0)
 {
-  localStorage.clear()
+  localStorage.clear();
   changeStyleHTML();
 }
 
 if (localStorage.getItem('css_refresh') == 'first_bg' & js_counter == 0)
 {
-  localStorage.clear()
-  changeStyleCSS();
+  localStorage.clear();
+  changeStyleHTML();
 }
 

@@ -1,8 +1,3 @@
-// There's no way to unload Javascript without a refresh, so a major variable or variables are killed to allow a new script. 
-// This is no way a practical or sutainable practice, but it works for this simple demontration of swapping out JS scripts.
-
-ctx = 0;
-
 //Source: https://codepen.io/jackrugile/pen/BvLHg
 
 var c = document.getElementById('canvas'),

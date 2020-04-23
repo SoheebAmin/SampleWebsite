@@ -1,17 +1,26 @@
 // Scripts that allow the the cycling between CSS, HTML, and JS background pages, stylesheets, and scripts.
 
 
-// This is script that would have changed HTML-only styling, but that isn't a thing since HTML5, so rather, it will
-// change the page with minimal CSS, imitating the early days of HTML with only simple BG color and image changes.
+// HTML BUTTON (although CSS is actually used. We are just simulating pre-HTML5 behavior)
 let html_counter = 0;
 let html_max = 5;
 let insert_style = "";
 
 function changeStyleHTML() 
 {
-  // restores default stylesheet.
-  document.getElementById('stylesheet').href = "for_bg_page_cycles/css_bgs/stylesheet0.css";
-  
+  // removes any canvas animation (undo of the CSS + Javascript Button)
+  if (js_counter != 0)
+  {
+    localStorage.setItem('html_refresh','first_bg');
+    location.reload(); 
+  }
+
+  // removes css stylesheet.
+  if (style_counter != 0)
+  {
+    document.getElementById('stylesheet').href = "for_bg_page_cycles/css_bgs/stylesheet0.css";
+  }
+
   // cycles through a counter to 5 for the different choices
   if (html_counter != html_max)
   {
@@ -60,8 +69,7 @@ function changeStyleHTML()
   });
 }
 
-
-// Changes the CSS styles by modifying the name of the ref stylesheet with a counter
+// CSS BUTTON
 let style_counter = 0;
 let stylesheets_max = 5;
 
@@ -76,10 +84,19 @@ function changeStyleCSS()
     style_counter = 0;
   }
 
-  // removes any selections made from the HTML button
-  document.getElementById('body_id').style.removeProperty("background-color");
-  document.getElementById('body_id').style.removeProperty("background-image");
-  document.getElementById('bg_text').style.removeProperty("color");
+  // removes any canvas animation (undo of the CSS + Javascript Button)
+  if (js_counter != 0)
+  {
+    localStorage.setItem('css_refresh','first_bg');
+    location.reload(); 
+  }
+  if (html_counter != 0)
+  {
+    // removes any selections made from the HTML button
+    document.getElementById('body_id').style.removeProperty("background-color");
+    document.getElementById('body_id').style.removeProperty("background-image");
+    document.getElementById('bg_text').style.removeProperty("color");
+  }
 
   // inject html based on the stylesheet to load
   $(function()
@@ -92,7 +109,7 @@ function changeStyleCSS()
 }
 
 
-// Adds a new CSS and Javascript source
+// CSS + JAVASCRIPT BUTTON
 let js_counter = 0;
 let js_max = 5;
 
@@ -102,15 +119,20 @@ function add_script()
   {
     js_counter++;
   }
+  // reloads the page after last animation, clearing JS cache. Reloads first animation.
   else
   {
-    js_counter = 0;
+    localStorage.setItem('js_refresh','first_bg');
+    location.reload(); 
+  }
+  if (html_counter != 0)
+  {
+    // removes any selections made from the HTML button
+    document.getElementById('body_id').style.removeProperty("background-color");
+    document.getElementById('body_id').style.removeProperty("background-image");
+    document.getElementById('bg_text').style.removeProperty("color");
   }
 
-  // removes any selections made from the HTML button
-  document.getElementById('body_id').style.removeProperty("background-color");
-  document.getElementById('body_id').style.removeProperty("background-image");
-  document.getElementById('bg_text').style.removeProperty("color");
 
   // sets the new stylesheet (Setting it before the JS script matters! Otherwise I've seen funky behavior!)
   document.getElementById('stylesheet').href = "for_bg_page_cycles/js_bgs/stylesheet" + js_counter + ".css";
@@ -121,3 +143,18 @@ function add_script()
   myScript.setAttribute('id', 'script');
   document.head.appendChild(myScript);
 }
+
+
+// checks local storage if see if there's a background to load. (CURRENTLY NOT WORKING)
+if (localStorage.getItem('html_refresh') == 'first_bg' & js_counter == 0)
+{
+  localStorage.clear()
+  changeStyleHTML();
+}
+
+if (localStorage.getItem('css_refresh') == 'first_bg' & js_counter == 0)
+{
+  localStorage.clear()
+  changeStyleCSS();
+}
+

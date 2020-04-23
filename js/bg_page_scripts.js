@@ -16,10 +16,11 @@ function changeStyleHTML()
     return 0;
   }
 
-  // removes css stylesheet.
+  // removes css stylesheet, and resets the CSS count.
   if (style_counter != 0)
   {
     document.getElementById('stylesheet').href = "for_bg_page_cycles/css_bgs/stylesheet0.css";
+    style_counter = 0;
   }
 
   // cycles through a counter to 5 for the different choices
@@ -91,12 +92,14 @@ function changeStyleCSS()
   {
     style_counter = 0;
   }
+
+  // removes any selections made from the HTML button, and resets html counter.
   if (html_counter != 0)
   {
-    // removes any selections made from the HTML button
     document.getElementById('body_id').style.removeProperty("background-color");
     document.getElementById('body_id').style.removeProperty("background-image");
     document.getElementById('bg_text').style.removeProperty("color");
+    html_counter = 0;
   }
 
   // inject html based on the stylesheet to load
@@ -127,12 +130,11 @@ function add_script()
   }
   if (html_counter != 0)
   {
-    // removes any selections made from the HTML button
     document.getElementById('body_id').style.removeProperty("background-color");
     document.getElementById('body_id').style.removeProperty("background-image");
     document.getElementById('bg_text').style.removeProperty("color");
+    html_counter = 0;
   }
-
 
   // sets the new stylesheet (Setting it before the JS script matters! Otherwise I've seen funky behavior!)
   document.getElementById('stylesheet').href = "for_bg_page_cycles/js_bgs/stylesheet" + js_counter + ".css";
@@ -145,9 +147,8 @@ function add_script()
 }
 
 
-// checks local storage if see if there's a background to load. (CURRENTLY NOT WORKING)
-
-
+// Checks cache to see if the first HTML or first CSS button was pressed while a Javascript background was active and loads it.
+// (This was tricky, since a refresh is needed to clear Javascript, so localstorage was used to prompt to load the first choice.)
 if (localStorage.getItem('page_refresh') == 'css' & js_counter == 0)
 {
   localStorage.clear();
@@ -159,3 +160,5 @@ if (localStorage.getItem('page_refresh') == 'html' & js_counter == 0)
   localStorage.clear();
   changeStyleHTML();
 }
+
+

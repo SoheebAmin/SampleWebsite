@@ -38,31 +38,37 @@ function changeStyleHTML()
   {
     insert_style = "background-color: white";
     document.getElementById('bg_text').style = "color: black";
+    document.getElementById('toggle_text').style = "color: black";
   }
   if (html_counter == 1)
   {
     insert_style = "background-color: silver";
     document.getElementById('bg_text').style = "color: red";
+    document.getElementById('toggle_text').style = "color: red";
   }
   if (html_counter == 2)
   {
     insert_style = "background-image: url('media/winter.jpg')";
     document.getElementById('bg_text').style = "color: gold";
+    document.getElementById('toggle_text').style = "color: gold";
   }
   if (html_counter == 3)
   {
     insert_style = insert_style = "background-color: maroon";
     document.getElementById('bg_text').style = "color: white";
+    document.getElementById('toggle_text').style = "color: white";
   }
   if (html_counter == 4)
   {
     insert_style = "background-image: url('media/stars_stock.png')";
     document.getElementById('bg_text').style = "color: white";
+    document.getElementById('toggle_text').style = "color: white";
   }
   if (html_counter == 5)
   {
     insert_style = "background-image: url('media/abstract.jpg')";
     document.getElementById('bg_text').style = "color: white";
+    document.getElementById('toggle_text').style = "color: white";
   }
   // applies the selected choice
   $(function()

@@ -6,6 +6,12 @@
     color: white;
 }
 
+#toggle_text
+{   
+    font-family: gergia, serif;
+    color: white;
+}
+
 #body_id {
   width: 100vw;
   height: 100vh;

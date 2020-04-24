@@ -5,6 +5,12 @@
     color: white;
 }
 
+#toggle_text
+{   
+    font-family: gergia, serif;
+    color: white;
+}
+
 * {
   margin: 0px;
   padding: 0px;

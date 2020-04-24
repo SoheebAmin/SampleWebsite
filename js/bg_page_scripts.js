@@ -105,6 +105,7 @@ function changeStyleCSS()
     document.getElementById('body_id').style.removeProperty("background-color");
     document.getElementById('body_id').style.removeProperty("background-image");
     document.getElementById('bg_text').style.removeProperty("color");
+    document.getElementById('toggle_text').style.removeProperty("color");
     html_counter = 0;
   }
 
@@ -139,6 +140,7 @@ function add_script()
     document.getElementById('body_id').style.removeProperty("background-color");
     document.getElementById('body_id').style.removeProperty("background-image");
     document.getElementById('bg_text').style.removeProperty("color");
+    document.getElementById('toggle_text').style.removeProperty("color");
     html_counter = 0;
   }
 

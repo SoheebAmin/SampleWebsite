@@ -19,11 +19,10 @@ function mixing()
 // HTML BUTTON (although CSS is actually used. We are just simulating pre-HTML5 behavior)
 var html_counter = 0;
 var html_max = 5;
-var insert_style = "";
 
 function changeStyleHTML()
 {
-  // removes any canvas animation (undo of the CSS + Javascript Button)
+  // removes any canvas animation (undo of the CSS + Javascript Button) 
   if (js_counter != 0 & allow_mixing == false)
   {
     localStorage.setItem('page_refresh','html');
@@ -48,48 +47,43 @@ function changeStyleHTML()
     html_counter = 0;
   }
 
-  // uses the counter's value to select a text and bg color/style
+  // uses the counter's value to select a text and bg color/style and applies it via JQuery
   if (html_counter == 0)
   {
-    insert_style = "background-color: white";
-    document.getElementById('bg_text').style = "color: black";
-    document.getElementById('toggle_text').style = "color: black";
+    document.querySelector('body').style = "background-color: white";
+    document.querySelector('#bg_text').style = "color: black";
+    document.querySelector('#toggle_text').style = "color: black";
   }
   if (html_counter == 1)
   {
-    insert_style = "background-color: silver";
-    document.getElementById('bg_text').style = "color: red";
-    document.getElementById('toggle_text').style = "color: red";
+    document.querySelector('body').style = "background-color: silver";
+    document.querySelector('#bg_text').style = "color: red";
+    document.querySelector('#toggle_text').style = "color: red";
   }
   if (html_counter == 2)
   {
-    insert_style = "background-image: url('media/winter.jpg')";
-    document.getElementById('bg_text').style = "color: gold";
-    document.getElementById('toggle_text').style = "color: gold";
+    document.querySelector('body').style = "background-image: url('media/winter.jpg')";
+    document.querySelector('#bg_text').style = "color: gold";
+    document.querySelector('#toggle_text').style = "color: gold";
   }
   if (html_counter == 3)
   {
-    insert_style = insert_style = "background-color: maroon";
-    document.getElementById('bg_text').style = "color: white";
-    document.getElementById('toggle_text').style = "color: white";
+    document.querySelector('body').style = "background-color: maroon";
+    document.querySelector('#bg_text').style = "color: white";
+    document.querySelector('#toggle_text').style = "color: white";
   }
   if (html_counter == 4)
   {
-    insert_style = "background-image: url('media/stars_stock.png')";
-    document.getElementById('bg_text').style = "color: white";
-    document.getElementById('toggle_text').style = "color: white";
+    document.querySelector('body').style = "background-image: url('media/stars_stock.png')";
+    document.querySelector('#bg_text').style = "color: white";
+    document.querySelector('#toggle_text').style = "color: white";
   }
   if (html_counter == 5)
   {
-    insert_style = "background-image: url('media/abstract.jpg')";
-    document.getElementById('bg_text').style = "color: white";
-    document.getElementById('toggle_text').style = "color: white";
+    document.querySelector('body').style = "background-image: url('media/abstract.jpg')";
+    document.querySelector('#bg_text').style = "color: white";
+    document.querySelector('#toggle_text').style = "color: white";
   }
-  // applies the selected choice
-  $(function()
-  {
-    document.getElementById('body_id').style = insert_style;
-  });
 }
 
 // CSS BUTTON
@@ -124,14 +118,14 @@ function changeStyleCSS()
     html_counter = 0;
   }
 
-  // inject html based on the stylesheet to load
+  // inject html based on the stylesheet to load using JQuery
   $(function()
   {
     $("#inject_html").load("for_bg_page_cycles/css_bgs/html_for_" + style_counter + ".html");
   });
 
   // sets the new stylesheet
-  document.getElementById('stylesheet').href = "for_bg_page_cycles/css_bgs/stylesheet" + style_counter + ".css";
+  document.querySelector('#stylesheet').href = "for_bg_page_cycles/css_bgs/stylesheet" + style_counter + ".css";
 }
 
 
@@ -160,7 +154,7 @@ function add_script()
   }
 
   // sets the new stylesheet (Setting it before the JS script matters! Otherwise I've seen funky behavior!)
-  document.getElementById('stylesheet').href = "for_bg_page_cycles/js_bgs/stylesheet" + js_counter + ".css";
+  document.querySelector('#stylesheet').href = "for_bg_page_cycles/js_bgs/stylesheet" + js_counter + ".css";
 
   // adds new Javascript source
   var myScript = document.createElement('script');

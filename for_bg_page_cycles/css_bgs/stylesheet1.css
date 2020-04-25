@@ -12,15 +12,12 @@
     color: white;
 }
 
-#body_id {
-  width: 100vw;
-  height: 100vh;
-  background: #3E1E68;
-}
-
 body {
     margin: 0;
     overflow: hidden;
+    width: 100vw;
+    height: 100vh;
+    background: #3E1E68;
 }
   
   .background span {

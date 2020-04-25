@@ -1,116 +1,115 @@
-<!--This is the most intricate page on this website. It starts with no background at all, but gives the user 3 options:
-
-  1. Add an HTML only background.
-  2. Add a CSS styled background.
-  3. Add a CSS + JS styled background.
-
-  Each button can cycle between 5 options for each choice, but also, the option of removing the CSS is available for CSS
-  pages, and the CSS and/or JS for the CSS + JS pages. All of this is done by using JQuery to update the HTML, CSS, and 
-  JS scripts on this page -->
+<!--This is the most convoluted page on this website. It starts with no background at all, but gives the user 3 options:
+   1. Add an HTML only background.
+   2. Add a CSS styled background.
+   3. Add a CSS + JS styled background.
+   
+   Each button can cycle between 5 options for each choice. Each choice will unselect the prvious one, unless the mixing 
+   background toggle is activated. Then, you can see what happens if the code for both styles is running together. -->
 
 <!doctype html>
-
 <html lang="en">
-<head>
-  <title>Backgrounds</title>
-  
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!--Relevant CSS pages (local and online) for this page-->
-  <link rel="stylesheet" href="https://www.w3schools.com/w3css/3/w3.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <link rel="stylesheet" href="css/bg_page_styles.css">
+  <head>
+      <title>Backgrounds</title>
 
-  <!--  JS Script for modals, and JQuery -->
-  <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script defer src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- Local JS Source-->
-  <script defer src="js/bg_page_scripts.js"></script>
-  
-  <!-- CSS and JS references updated using JS with the button on the page -->
-  <link rel="stylesheet" href="for_bg_page_cycles/js_bgs/stylesheet0.css" id="stylesheet">
+      <!--Relevant CSS pages for this page: W3 schools, bootstrap for modals, and local styles -->
+      <link rel="stylesheet" href="https://www.w3schools.com/w3css/3/w3.css">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+      <link rel="stylesheet" href="css/bg_page_styles.css">
 
-</head>
+      <!-- JS Script for modals, and JQuery for modals + other functions, and local JS source -->
+      <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+      <script defer src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+      <script defer src="js/bg_page_scripts.js"></script>
 
-<body id="body_id">
-  
-  <div id="container">
+      <!-- CSS stylesheet, updated using JS with the button on the page. JS styles will also inject a new script sheet here.  -->
+      <link rel="stylesheet" href="for_bg_page_cycles/js_bgs/stylesheet0.css" id="stylesheet">
+  </head>
 
-  <!-- The Navigation bar -->
-  <nav class="w3-bar w3-black" class="navbar" style="font-family: verdana">
-    <a href="index.html" class="w3-button w3-bar-item">Homepage</a>
-    <a href="forms.html" class="w3-button w3-bar-item">Fill Forms</a>
-    <a href="bg_page.html" class="w3-button w3-bar-item">Background Effects</a>
-    <a href="js_page.html" class="w3-button w3-bar-item">Fun with Javascript</a>
-  </nav>
- 
- 
-       <!--text to display-->
-       <div id="overlay">
-        <br><br><br><br><br>
-        <h1 id="bg_text">Cycle through backgrounds that use different languages.</h1> 
-        <br><br>
-        <button type="button" class="btn btn-danger" onclick="changeStyleHTML();return false">
-        HTML</button>
-        <br><br><br>
-        <button type="button" class="btn btn-danger" onclick="changeStyleCSS();return false">
-         CSS</button>
-        <br><br><br>
-        <button type="button" class="btn btn-danger" onclick="add_script();return false">
-        CSS + Javascript</button>
-        <h3 id ="toggle_text">Allow mixing of styles</h3>
-        <label class="switch">
-        <input type="checkbox" onclick="mixing();">
-        <span class="slider round"></span>
-        </label>
-        
+  <body id="body_id">
+
+      <!-- container to allow all text/buttons on this page to stay above JavaScript canvases -->
+      <div id="container">
+
+        <!-- The Navigation bar -->
+        <nav class="w3-bar w3-black" class="navbar" style="font-family: verdana">
+          <a href="index.html" class="w3-button w3-bar-item">Homepage</a>
+          <a href="bg_page.html" class="w3-button w3-bar-item">Backgrounds</a>
+          <a href="forms.html" class="w3-button w3-bar-item">Forms</a>
+          <a href="js_page.html" class="w3-button w3-bar-item">Fun with Javascript</a>
+        </nav>
+
+        <!--text to display-->
+        <div id="center_overlay">
+            <br><br><br><br><br>
+            
+            <!-- main text of this page + buttons to change bg-->
+            <h1 id="bg_text">Cycle through backgrounds that use different languages.</h1>
+            <br><br>
+            <button type="button" class="btn btn-danger" onclick="changeStyleHTML();return false"> HTML</button>
+            <br><br><br>
+            <button type="button" class="btn btn-danger" onclick="changeStyleCSS();return false">CSS</button>
+            <br><br><br>
+            <button type="button" class="btn btn-danger" onclick="add_script();return false">CSS + JavaScript</button>
+            
+            <!-- toggle for mixing -->
+            <h3 id ="toggle_text">Allow mixing of styles</h3>
+            <label class="switch">
+            <input type="checkbox" onclick="mixing();">
+            <span class="slider round"></span>
+            </label>  
+        </div>
+        <canvas id="canvas"></canvas>
       </div>
-    <canvas id="canvas"></canvas>
-    </div>
 
+      <!-- The HTML required for the CSS backgrounds is injected here, done with JQuery. -->
+      <div id = inject_html></div>
 
-  <!-- JS will inject the appropriate HTML for each stylesheet here-->
-  <div id = inject_html></div>
-  
-  <!-- Modal button and its content-->
-  <div class="container" id="top_right">
-    <button id="button_adjust" type="button" class="btn btn-info btn-lg" data-toggle="modal"
-      data-target="#myModal">Explanation</button>
-    <div class="modal fade" id="myModal" role="dialog">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h5 class="modal-title">Backgrounds Explained</h5>
-          </div>
-          <div class="modal-body" style="text-align: justify;">
-            <p>This background page comprises of 4 main components:</p>
-            <ul>The header: This is a modified header provided by W3 schools. Their stylesheet is linked in the
-              HTML.</ul>
-            <ul>The changing backgrounds: For HTML, each background is just a basic style applied to the body.
-              For the CSS, each background has its own stylesheet. For the Javascript, each background is
-              a stylesheet + JS script file. The cycling and showing/hiding elements is handled by another
-              local Javascript file with functions created to cycle between styles, stylesheets, and script.</ul>
-            <ul>The page text and change button: This is basic HTML text my own styling.</ul>
-            <ul>This explanation pop-up: This is a button and modal provided by bootstrap, with a bit of
-              customization for button position and color with my own CSS.</ul>
-            <p>As with most pages on this sample site, the stylesheets are from libararies, with a self-made
-              stylesheet to customize provided styles as desired.
-              Besides just viewing it in your browser, the source code for this page can be found <a
-                style="color:blue"
-                href="https://github.com/SoheebAmin/Website_Tutorial/blob/master/bg.html">here</a>.
-              The code has comments to explain what each portion of code is doing.</p>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Got it</button>
-          </div>
+      <!-- Modal button and its content-->
+      <div class="container" id="top_right">
+        <button id="button_adjust" type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Explanation</button>
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title"><b>Backgrounds Explained</b></h4>
+                  </div>
+
+                  <div class="modal-body" style="text-align: justify;">
+                    <p>This page was made using the following techniques:</p>
+                    <ul><b>HTML</b>: There actually aren't any "HTML styles" in HTML5, but they were simulated with basic CSS that 
+                      just changes background and text color. The change is made with document.Queryselector on relevant tags/IDs.  
+                    </ul>
+                    <ul><b>CSS</b>: The CSS is set with document.Queryselector to change the stylesheet. Each stylesheet has
+                      has its own HTML to go with it, which is injected using JQuery's load function. </ul>
+                    <ul><b>JavaScript</b>: The CSS is loaded the same way as the CSS button, and the only HTML needed is the
+                      hard-coded canvas tags. The JavaScript however cannot be unloaded using JQuery, or at all, except via refresh. 
+                      Therefore, a key variable (ctx) is reassigned each time, rendering the previous script useless, but still
+                      technically loaded. This is admittedly far from elegant, but gets the job done for the page.</ul>
+                    <ul><b>The Toggle</b>: The functions to change backgrounds based on a different language includes checks to see
+                      if another background is running and its code is terminated or replaced. These checks are conditional within  
+                      the functions and can be toggled off to allow a (sometimes disastrous) mix of backgrounds.</ul>
+                    <p>The cycles for each are done using a counter which resets at the last one, except JavaScript, which
+                      refreshes the page to clear the loaded scripts. The HTML with comments for this page can be found
+                      <a style="color:blue"href="https://github.com/SoheebAmin/Website_Tutorial/blob/master/bg_page.html">here</a>.
+                        The scripts for the buttons and toggle can be found
+                      <a style="color:blue"href="https://github.com/SoheebAmin/Website_Tutorial/blob/master/js/bg_page_scripts.js">here</a>.
+                        The CSS and JavaScript files loaded with each button click can be found
+                      <a style="color:blue"href="https://github.com/SoheebAmin/Website_Tutorial/blob/master/for_bg_page_cycles">here</a>.
+                    </p>
+                  </div>
+                  
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Got it</button>
+                  </div>
+              </div>
+            </div>
         </div>
       </div>
-    </div>
-  </div>      
-        
-</body>
+  </body>
 
 </html>

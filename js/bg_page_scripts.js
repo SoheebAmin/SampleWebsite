@@ -1,10 +1,25 @@
 // Scripts that allow the the cycling between CSS, HTML, and JS background pages, stylesheets, and scripts.
 
 
+// function to skip all code that helps prevent background mixing, allowing a mixing of code for different backgrounds. 
+var allow_mixing = false
+
+function mixing()
+{
+  if (allow_mixing == false)
+  {
+    allow_mixing = true;
+  }
+  else
+  {
+    allow_mixing = false;
+  }
+}
+
 // HTML BUTTON (although CSS is actually used. We are just simulating pre-HTML5 behavior)
-let html_counter = 0;
-let html_max = 5;
-let insert_style = "";
+var html_counter = 0;
+var html_max = 5;
+var insert_style = "";
 
 function changeStyleHTML()
 {
@@ -78,8 +93,8 @@ function changeStyleHTML()
 }
 
 // CSS BUTTON
-let style_counter = 0;
-let stylesheets_max = 5;
+var style_counter = 0;
+var stylesheets_max = 5;
 
 function changeStyleCSS()
 {
@@ -121,8 +136,8 @@ function changeStyleCSS()
 
 
 // CSS + JAVASCRIPT BUTTON
-let js_counter = 0;
-let js_max = 5;
+var js_counter = 0;
+var js_max = 5;
 
 function add_script()
 {
@@ -168,5 +183,3 @@ if (localStorage.getItem('page_refresh') == 'html' & js_counter == 0)
   localStorage.clear();
   changeStyleHTML();
 }
-
-

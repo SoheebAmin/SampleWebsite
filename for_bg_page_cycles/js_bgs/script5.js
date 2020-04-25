@@ -1,7 +1,5 @@
 // Source: https://codepen.io/hakimel/pen/QdWpRv
 
-var ctx = document.querySelector( 'canvas' );
-var context = ctx.getContext( '2d' );
 
 var time = 0,
     velocity = 0.1,
@@ -17,6 +15,10 @@ var POINTS = MAX_OFFSET / SPACING;
 var PEAK = MAX_OFFSET * 0.25;
 var POINTS_PER_LAP = 6;
 var SHADOW_STRENGTH = 6;
+
+var ctx = document.querySelector('canvas');
+var context = ctx.getContext('2d');
+
 
 setup();
 

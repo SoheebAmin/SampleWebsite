@@ -12,3 +12,10 @@ body
     background-size: 300% 300%;
     min-height: 100%;
 }
+
+#top_right
+{
+    position:absolute; 
+    top:50px; 
+    left:1350px;
+}

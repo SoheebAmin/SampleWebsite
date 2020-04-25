@@ -24,7 +24,7 @@ var insert_style = "";
 function changeStyleHTML()
 {
   // removes any canvas animation (undo of the CSS + Javascript Button)
-  if (js_counter != 0)
+  if (js_counter != 0 & allow_mixing == false)
   {
     localStorage.setItem('page_refresh','html');
     location.reload(); 
@@ -32,7 +32,7 @@ function changeStyleHTML()
   }
 
   // removes css stylesheet, and resets the CSS count.
-  if (style_counter != 0)
+  if (style_counter != 0 & allow_mixing == false)
   {
     document.getElementById('stylesheet').href = "for_bg_page_cycles/css_bgs/stylesheet0.css";
     style_counter = 0;
@@ -99,7 +99,7 @@ var stylesheets_max = 5;
 function changeStyleCSS()
 {
   // removes any canvas animation (undo of the CSS + Javascript Button)
-  if (js_counter != 0)
+  if (js_counter != 0 & allow_mixing == false)
   {
     localStorage.setItem('page_refresh','css');
     location.reload(); 
@@ -115,7 +115,7 @@ function changeStyleCSS()
   }
 
   // removes any selections made from the HTML button, and resets html counter.
-  if (html_counter != 0)
+  if (html_counter != 0 & allow_mixing == false)
   {
     document.getElementById('body_id').style.removeProperty("background-color");
     document.getElementById('body_id').style.removeProperty("background-image");
@@ -150,7 +150,7 @@ function add_script()
   {
     location.reload(); 
   }
-  if (html_counter != 0)
+  if (html_counter != 0 & allow_mixing == false)
   {
     document.getElementById('body_id').style.removeProperty("background-color");
     document.getElementById('body_id').style.removeProperty("background-image");

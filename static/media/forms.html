@@ -1,0 +1,62 @@
+<!--This page shows the different forms that can be filled out, which link to a DB to record user input-->
+
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>Forms</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!--Relevant CSS pages (Bootstrap for modals + W3Schools + local) -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/3/w3.css">
+  <link rel="stylesheet" href="css/forms_page_styles.css">
+
+  <!-- JS Script for modals, JQuery (for modals + other functions), and local JS source -->
+  <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script defer src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script defer src="js/forms_page.js"></script>
+</head>
+
+<body>
+  <!-- The Navigation bar -->
+  <nav class="w3-bar w3-black" class="navbar" style="font-family: verdana">
+    <a href="index.html" class="w3-button w3-bar-item">Homepage</a>
+    <a href="bg_page.html" class="w3-button w3-bar-item">Backgrounds</a>
+    <a href="forms.html" class="w3-button w3-bar-item">Forms</a>
+    <a href="js_page.html" class="w3-button w3-bar-item">Fun with Javascript</a>
+  </nav>
+
+  <!--text to display-->
+  <div class="text-dark" style="text-align: center;">
+    <h1>Fill Forms</h1>
+    <h3>Here are some ways to get users to input data</h3>
+  </div>
+
+  <div class="container" id="top_right">
+    <!-- Modal Button -->
+    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Explanation</button>
+    <!-- Modal and its content -->
+    <div class="modal fade" id="myModal" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title"><b>Forms: Getting and Organizing Data</b></h4>
+          </div>
+          
+          <div class="modal-body" style="text-align: center">
+            <p>Some text in the modal.</p>
+          </div>
+          
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Got it</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

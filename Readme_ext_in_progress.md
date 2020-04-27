@@ -1,6 +1,6 @@
 # How to Add/Remove HTML, CSS, and Javascript from Webpages
 
-A most I had to learn in building this sample website had to deal with how to dynamically alter the HTML, CSS, and Javascript within a webpage. Let's look at the techniques used here for each one.
+The most I had to learn in building this sample website had to deal with how to dynamically alter the HTML, CSS, and Javascript within a webpage. Let's look at the techniques used here for each one.
 
 ## HTML
 

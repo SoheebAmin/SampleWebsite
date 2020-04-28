@@ -20,14 +20,8 @@
 </head>
 
 <body>
-  <!-- The Navigation bar -->
-  <nav class="w3-bar w3-black" class="navbar" style="font-family: verdana" style="font-family: verdana">
-    <a href="/" class="w3-button w3-bar-item">Homepage</a>
-    <a href="/bg_page.html" class="w3-button w3-bar-item">Backgrounds</a>
-    <a href="/js_page.html" class="w3-button w3-bar-item">Fun with Javascript</a>
-    <a href="/forms.html" class="w3-button w3-bar-item">Forms and Data</a>
-    <a href="/flask_page.html" class="w3-button w3-bar-item">"Back End" with Flask</a>
-  </nav>
+  <!-- The Navigation bar. It is rendered by Flask, and exists in application.py -->
+  {{nav_bar}}
 
   <!--text to display-->
   <h2 class="text-dark" style="text-align:center">Check out what Javascript makes possible.</h1>

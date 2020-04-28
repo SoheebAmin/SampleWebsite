@@ -4,34 +4,35 @@
 <html lang="en">
 
 <head>
-  <title>Forms</title>
+  <title>Backend with Flask</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!--Relevant CSS pages (Bootstrap for modals + W3Schools + local) -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/3/w3.css">
-  <link rel="stylesheet" href="css/forms_page_styles.css">
+  <link rel="stylesheet" href="/static/css/forms_page_styles.css">
 
   <!-- JS Script for modals, JQuery (for modals + other functions), and local JS source -->
   <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script defer src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  <script defer src="js/forms_page.js"></script>
+  <script defer src="/static/js/forms_page.js"></script>
 </head>
 
 <body>
   <!-- The Navigation bar -->
-  <nav class="w3-bar w3-black" class="navbar" style="font-family: verdana">
-    <a href="index.html" class="w3-button w3-bar-item">Homepage</a>
-    <a href="bg_page.html" class="w3-button w3-bar-item">Backgrounds</a>
-    <a href="forms.html" class="w3-button w3-bar-item">Forms</a>
-    <a href="js_page.html" class="w3-button w3-bar-item">Fun with Javascript</a>
+  <nav class="w3-bar w3-black" class="navbar" style="font-family: verdana" style="font-family: verdana">
+    <a href="/" class="w3-button w3-bar-item">Homepage</a>
+    <a href="/bg_page.html" class="w3-button w3-bar-item">Backgrounds</a>
+    <a href="/js_page.html" class="w3-button w3-bar-item">Fun with Javascript</a>
+    <a href="/forms.html" class="w3-button w3-bar-item">Forms and Data</a>
+    <a href="/flask_page.html" class="w3-button w3-bar-item">"Back End" with Flask</a>
   </nav>
 
   <!--text to display-->
   <div class="text-dark" style="text-align: center;">
-    <h1>Fill Forms</h1>
-    <h3>Here are some ways to get users to input data</h3>
+    <h1>Server-side Power with Flask</h1>
+    <h3>Using flask, you can have dynamic pages, and back end programs.</h3>
   </div>
 
   <div class="container" id="top_right">
@@ -43,7 +44,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title"><b>Forms: Getting and Organizing Data</b></h4>
+            <h4 class="modal-title"><b>Flask: Make your website dynamic</b></h4>
           </div>
           
           <div class="modal-body" style="text-align: center">

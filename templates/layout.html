@@ -5,8 +5,13 @@ explaination modal-->
 <html lang="en">
 
 <head>
+
+  <!-- Common tags to ensure unicode char set, and proper scaling on all devices -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Sets the favicon, the small icon in browser tab. Done with Flask syntax for link -->
+  <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
 
   <!--Relevant CSS pages (Bootstrap for modals + W3Schools + local) -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">

@@ -1,13 +1,25 @@
+<!--This is the most convoluted page on this website. It starts with no background at all, but gives the user 3 options:
+   1. Add an HTML only background.
+   2. Add a CSS styled background.
+   3. Add a CSS + JS styled background.
+   
+   Each button can cycle between 5 options for each choice. Each choice will unselect the prvious one, unless the mixing 
+   background toggle is activated. Then, you can see what happens if the code for both styles is running together. -->
+
 {% extends "layout.html" %}
 
+
 {% block head %}
-   <!-- Local CSS and JS Sources -->
+  <title>Backgrounds</title>
+
+  <!-- Local CSS and JS Sources -->
   <link rel="stylesheet" href="/static/css/bg_page_styles.css">
   <script defer src="/static/js/bg_page_scripts.js"></script>
 
   <!-- CSS stylesheet, updated using JS with the button on the page. JS styles will also inject a new script sheet here.  -->
   <link rel="stylesheet" href="/static/for_bg_page_cycles/js_bgs/stylesheet0.css" id="stylesheet">
 {% endblock %}
+
 
 {% block body %}
   <!-- Container to allow all text/buttons on this page to stay above JavaScript canvases -->
@@ -40,6 +52,7 @@
   <!-- The HTML required for the CSS backgrounds is injected here, done with JQuery. -->
   <div id = inject_html></div>
 {% endblock %}
+
 
 {% block modal_text %}
                 <h4 class="modal-title"><b>Backgrounds Explained!</b></h4>

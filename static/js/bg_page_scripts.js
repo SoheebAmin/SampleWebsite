@@ -111,8 +111,7 @@ function changeStyleCSS()
   // removes any selections made from the HTML button, and resets html counter.
   if (html_counter != 0 & allow_mixing == false)
   {
-    document.getElementById('body_id').style.removeProperty("background-color");
-    document.getElementById('body_id').style.removeProperty("background-image");
+    document.getElementsByTagName("body")[0].removeAttribute("style"); 
     document.getElementById('bg_text').style.removeProperty("color");
     document.getElementById('toggle_text').style.removeProperty("color");
     html_counter = 0;
@@ -146,8 +145,7 @@ function add_script()
   }
   if (html_counter != 0 & allow_mixing == false)
   {
-    document.getElementById('body_id').style.removeProperty("background-color");
-    document.getElementById('body_id').style.removeProperty("background-image");
+    document.getElementsByTagName("body")[0].removeAttribute("style");
     document.getElementById('bg_text').style.removeProperty("color");
     document.getElementById('toggle_text').style.removeProperty("color");
     html_counter = 0;

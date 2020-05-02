@@ -45,3 +45,31 @@ function scramble()
   // Alert to display
   alert('Scambled Text: ' + scrambled_text);
 }
+
+// function to toggle 
+
+function toggle_input()
+{ 
+  // disables the submit buton if text is empty upon the toggle being pressed.
+  if (document.querySelector("#scramble_text").value === "" & document.querySelector('#input_checkbox').checked)
+  {
+    document.querySelector("#scramble_submit").disabled = true;
+  }
+  else
+  {
+    document.querySelector("#scramble_submit").disabled = false;
+  }
+
+  // disables/re-enables when toggle is on.
+  document.querySelector("#scramble_text").onkeyup = function ()
+  {
+    if (document.querySelector("#scramble_text").value === "" & document.querySelector('#input_checkbox').checked)
+    {
+      document.querySelector("#scramble_submit").disabled = true;
+    }
+    else
+    {
+      document.querySelector("#scramble_submit").disabled = false;
+    }
+  }
+}

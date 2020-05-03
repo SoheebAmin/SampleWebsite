@@ -1,21 +1,6 @@
 // Scripts that allow the the cycling between CSS, HTML, and JS background pages, stylesheets, and scripts.
 
 
-// function to skip all code that helps prevent background mixing, allowing a mixing of code for different backgrounds. 
-var allow_mixing = false
-
-function mixing()
-{
-  if (allow_mixing == false)
-  {
-    allow_mixing = true;
-  }
-  else
-  {
-    allow_mixing = false;
-  }
-}
-
 // HTML BUTTON (although CSS is actually used. We are just simulating pre-HTML5 behavior)
 var html_counter = 0;
 var html_max = 5;
@@ -23,7 +8,7 @@ var html_max = 5;
 function changeStyleHTML()
 {
   // removes any canvas animation (undo of the CSS + Javascript Button) 
-  if (js_counter != 0 & allow_mixing == false)
+  if (js_counter != 0 & document.querySelector('#allow_mixing:checked') == null)
   {
     localStorage.setItem('page_refresh','html');
     location.reload(); 
@@ -31,7 +16,7 @@ function changeStyleHTML()
   }
 
   // removes css stylesheet, and resets the CSS count.
-  if (style_counter != 0 & allow_mixing == false)
+  if (style_counter != 0 & document.querySelector('#allow_mixing:checked') == null)
   {
     document.getElementById('stylesheet').href = "/static/for_bg_page_cycles/css_bgs/stylesheet0.css";
     style_counter = 0;
@@ -93,7 +78,7 @@ var stylesheets_max = 5;
 function changeStyleCSS()
 {
   // removes any canvas animation (undo of the CSS + Javascript Button)
-  if (js_counter != 0 & allow_mixing == false)
+  if (js_counter != 0 & document.querySelector('#allow_mixing:checked') == null)
   {
     localStorage.setItem('page_refresh','css');
     location.reload(); 
@@ -109,7 +94,7 @@ function changeStyleCSS()
   }
 
   // removes any selections made from the HTML button, and resets html counter.
-  if (html_counter != 0 & allow_mixing == false)
+  if (html_counter != 0 & document.querySelector('#allow_mixing:checked') == null)
   {
     document.getElementsByTagName("body")[0].removeAttribute("style"); 
     document.getElementById('bg_text').style.removeProperty("color");
@@ -143,7 +128,7 @@ function add_script()
   {
     location.reload(); 
   }
-  if (html_counter != 0 & allow_mixing == false)
+  if (html_counter != 0 & document.querySelector('#allow_mixing:checked') == null)
   {
     document.getElementsByTagName("body")[0].removeAttribute("style");
     document.getElementById('bg_text').style.removeProperty("color");

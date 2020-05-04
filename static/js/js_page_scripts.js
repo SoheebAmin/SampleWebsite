@@ -73,3 +73,84 @@ function toggle_input()
     }
   }
 }
+
+// changes bg color based on user input
+
+
+// function to check if a string is a browser-supported color that CSS can recognize
+function isColor(strColor){
+  var s = new Option().style;
+  s.color = strColor;
+  return s.color == strColor;
+}
+
+// updates the font color based on user input
+function color_change(id_of_input)
+{
+  var fetched_color = document.querySelector(id_of_input).value;
+  if (isColor(fetched_color) == false)
+  {
+    alert(fetched_color + " is not a browser-recognized color!")
+  }
+  var style = document.createElement('style');
+  
+  // if input id is "bg_color", changes the color of the background
+  if (id_of_input === "#bg_color")
+  {
+    
+    // removes a w3 class that creates a a grey bg for a div
+    document.querySelector('#has_grey_class').classList.remove("w3-light-grey");
+    
+    //adds new style based on input color
+    style.innerHTML = `
+    * {
+    background-color: ` + fetched_color + ` !important;
+    }
+    `;
+    document.head.appendChild(style);
+
+    style = document.createElement('style');   
+  }
+  
+  // if input id is "font_color," changing the font color with the input. 
+  else
+  {
+    style.innerHTML = `
+    * {
+    color: ` + fetched_color + ` !important;
+    }
+    `;
+    document.head.appendChild(style);
+
+    style = document.createElement('style');
+    
+    
+    // Reassigns the default W3-grey font to the input color, since it is not overridden with the previous style.
+    style.innerHTML = `
+    .w3-text-grey {
+    color: ` + fetched_color + ` !important;
+    }
+    `;
+    document.head.appendChild(style);
+  }
+}
+
+
+// changes font size based on user input
+function font_size_change()
+{
+  var fetched_font = document.querySelector('#font_size').value;
+  var style = document.createElement('style');
+  style.innerHTML = `
+  * {
+  font-size: ` + fetched_font + `px !important;
+  }
+  `;
+  document.head.appendChild(style);
+}
+
+
+function font_style_change()
+{
+  alert('works3');
+}

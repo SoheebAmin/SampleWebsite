@@ -1,5 +1,6 @@
 // These are the scripts needed for the JS page.
 
+
 function scramble()
 {
   //grabs the input from the form, and gives error if none.
@@ -74,7 +75,7 @@ function toggle_input()
 }
 
 
-// function to check if a string is a browser-supported color that CSS can recognize
+// helper function to check if a string is a browser-supported color that CSS can recognize
 function isColor(strColor){
   var s = new Option().style;
   s.color = strColor;
@@ -107,8 +108,6 @@ function color_change(id_of_input)
     }
     `;
     document.head.appendChild(style);
-
-    style = document.createElement('style');   
   }
   
   // if input id is "font_color," changing the font color with the input. 
@@ -147,67 +146,26 @@ function font_size_change()
 }
 
 
-// Helper function to see if font is valid in CSS. Unfortunately there is no simple way for this, so I've borrowed some code.
-// Honestly, I don't understand all of it, but I tested it and it works. 
-// Usage: d = new Detector();
-// d.detect('font name');
-//Source: https://gist.github.com/szepeviktor/d28dfcfc889fe61763f3
-
-var Detector = function() {
-   // a font will be compared against all the three default fonts.
-   // and if it doesn't match all 3 then that font is not available.
-   var baseFonts = ['monospace', 'sans-serif', 'serif'];
-
-   //we use m or w because these two characters take up the maximum width.
-   // And we use a LLi so that the same matching fonts can get separated
-   var testString = "mmmmmmmmmmlli";
-
-   //we test using 72px font size, we may use any size. I guess larger the better.
-   var testSize = '72px';
-
-   var h = document.getElementsByTagName("body")[0];
-
-   // create a SPAN in the document to get the width of the text we use to test
-   var s = document.createElement("span");
-   s.style.fontSize = testSize;
-   s.innerHTML = testString;
-   var defaultWidth = {};
-   var defaultHeight = {};
-   for (var index in baseFonts) {
-       //get the default width for the three base fonts
-       s.style.fontFamily = baseFonts[index];
-       h.appendChild(s);
-       defaultWidth[baseFonts[index]] = s.offsetWidth; //width for the default font
-       defaultHeight[baseFonts[index]] = s.offsetHeight; //height for the defualt font
-       h.removeChild(s);
-   }
-
-   function detect(font) {
-       var detected = false;
-       for (var index in baseFonts) {
-           s.style.fontFamily = font + ',' + baseFonts[index]; // name of the font along with the base font for fallback.
-           h.appendChild(s);
-           var matched = (s.offsetWidth != defaultWidth[baseFonts[index]] || s.offsetHeight != defaultHeight[baseFonts[index]]);
-           h.removeChild(s);
-           detected = detected || matched;
-       }
-       return detected;
-   }
-   this.detect = detect;
-};
-
+// List of all CSS supported fonts. Only the second list is used, but I like the idea of keeping a properly cased CSS fonts list somewhere.
+var supported_fonts_cased = ['Abadi MT Condensed Light', 'Aharoni', 'Aharoni Bold', 'Aldhabi', 'AlternateGothic2 BT', 'Andale Mono', 'Andalus', 'Angsana New', 'AngsanaUPC', 'Aparajita', 'Apple Chancery', 'Arabic Typesetting', 'Arial', 'Arial Black', 'Arial narrow', 'Arial Nova', 'Arial Rounded MT Bold', 'Arnoldboecklin', 'Avanta Garde', 'Bahnschrift', 'Bahnschrift Light', 'Bahnschrift SemiBold', 'Bahnschrift SemiLight', 'Baskerville', 'Batang', 'BatangChe', 'Big Caslon', 'BIZ UDGothic', 'BIZ UDMincho Medium', 'Blippo', 'Bodoni MT', 'Book Antiqua', 'Bookman', 'Bradley Hand', 'Browallia New', 'BrowalliaUPC', 'Brush Script MT', 'Brush Script Std', 'Brushstroke', 'Calibri', 'Calibri Light', 'Calisto MT', 'Cambodian', 'Cambria', 'Cambria Math', 'Candara', 'Century Gothic', 'Chalkduster', 'Cherokee', 'Comic Sans', 'Comic Sans MS', 'Consolas', 'Constantia', 'Copperplate', 'Copperplate Gothic Light', 'Copperplate Gothic Bold', 'Corbel', 'Cordia New', 'CordiaUPC', 'Coronet script', 'Courier', 'Courier New', 'DaunPenh', 'David', 'DengXian', 'DFKai-SB', 'Didot', 'DilleniaUPC', 'DokChampa', 'Dotum', 'DotumChe', 'Ebrima', 'Estrangelo Edessa', 'EucrosiaUPC', 'Euphemia', 'FangSong', 'Florence', 'Franklin Gothic Medium', 'FrankRuehl', 'FressiaUPC', 'Futara', 'Gabriola', 'Garamond', 'Gautami', 'Geneva', 'Georgia', 'Georgia Pro', 'Gill Sans', 'Gill Sans Nova', 'Gisha', 'Goudy Old Style', 'Gulim', 'GulimChe', 'Gungsuh', 'GungsuhChe', 'Hebrew', 'Helvetica', 'Hoefler Text', 'HoloLens MDL2 Assets', 'Impact', 'Ink Free', 'IrisUPC', 'Iskoola Pota', 'Japanese', 'JasmineUPC', 'Javanese Text', 'Jazz LET', 'KaiTi', 'Kalinga', 'Kartika', 'Khmer UI', 'KodchiangUPC', 'Kokila', 'Korean', 'Lao', 'Lao UI', 'Latha', 'Leelawadee', 'Leelawadee UI', 'Leelawadee UI Semilight', 'Levenim MT', 'LilyUPC', 'Lucida Bright', 'Lucida Console', 'Lucida Handwriting', 'Lucida Sans', 'Lucida Sans Typewriter', 'Lucida Sans Unicode', 'Lucidatypewriter', 'soft YaHei UI', 'Microsoft Yi Baiti', 'MingLiU', 'MingLiU_HKSCS', 'MingLiU_HKSCS-ExtB', 'MingLiU-ExtB', 'Miriam', 'Monaco', 'Mongolian Baiti', 'MoolBoran', 'MS Gothic', 'MS Mincho', 'MS PGothic', 'MS PMincho', 'MS UI Gothic', 'MV Boli', 'Myanmar Text', 'Narkisim', 'Neue Haas Grotesk Text Pro', 'New Century Schoolbook', 'News Gothic MT', 'Nirmala UI', 'No automatic language associations', 'Noto', 'NSimSun', 'Nyala', 'Oldtown', 'Optima', 'Palatino', 'Palatino Linotype', 'papyrus', 'Parkavenue', 'Perpetua', 'Plantagenet Cherokee', 'PMingLiU', 'Raavi', 'Rockwell', 'Rockwell Extra Bold', 'Rockwell Nova', 'Rockwell Nova Cond', 'Rockwell Nova Extra Bold', 'Rod', 'Sakkal Majalla', 'Sanskrit Text', 'segoeMDL2Assets', 'Segoe Print', 'Segoe Script', 'Segoe UI', 'Segoe UI Emoji', 'Segoe UI Historic', 'Segoe UI Symbol', 'Shonar Bangla', 'Shruti', 'SimHei', 'SimKai', 'Simplified Arabic', 'Simplified Chinese', 'SimSun', 'SimSun-ExtB', 'Sitka', 'Snell Roundhan', 'Stencil Std', 'Sylfaen', 'Symbol', 'Tahoma', 'Thai', 'Times New Roman', 'Traditional Arabic', 'Traditional Chinese', 'Trattatello', 'Trebuchet MS', 'UD Digi Kyokasho', 'UD Digi Kyokasho NK-R', 'UD Digi Kyokasho NP-R', 'UD Digi Kyokasho N-R', 'Urdu Typesetting', 'URW Chancery', 'Utsaah', 'Vani', 'Verdana', 'Verdana Pro', 'Vijaya', 'Vrinda', 'Webdings', 'Westminster', 'Wingdings', 'Yu Gothic', 'Yu Gothic UI', 'Yu Mincho', 'Zapf Chancery']
+var supported_fonts = ['abadi mt condensed light', 'aharoni', 'aharoni bold', 'aldhabi', 'alternategothic2 bt', 'andale mono', 'andalus', 'angsana new', 'angsanaupc', 'aparajita', 'apple chancery', 'arabic typesetting', 'arial', 'arial black', 'arial narrow', 'arial nova', 'arial rounded mt bold', 'arnoldboecklin', 'avanta garde', 'bahnschrift', 'bahnschrift light', 'bahnschrift semibold', 'bahnschrift semilight', 'baskerville', 'batang', 'batangche', 'big caslon', 'biz udgothic', 'biz udmincho medium', 'blippo', 'bodoni mt', 'book antiqua', 'bookman', 'bradley hand', 'browallia new', 'browalliaupc', 'brush script mt', 'brush script std', 'brushstroke', 'calibri', 'calibri light', 'calisto mt', 'cambodian', 'cambria', 'cambria math', 'candara', 'century gothic', 'chalkduster', 'cherokee', 'comic sans', 'comic sans ms', 'consolas', 'constantia', 'copperplate', 'copperplate gothic light', 'copperplate gothic bold', 'corbel', 'cordia new', 'cordiaupc', 'coronet script', 'courier', 'courier new', 'daunpenh', 'david', 'dengxian', 'dfkai-sb', 'didot', 'dilleniaupc', 'dokchampa', 'dotum', 'dotumche', 'ebrima', 'estrangelo edessa', 'eucrosiaupc', 'euphemia', 'fangsong', 'florence', 'franklin gothic medium', 'frankruehl', 'fressiaupc', 'futara', 'gabriola', 'garamond', 'gautami', 'geneva', 'georgia', 'georgia pro', 'gill sans', 'gill sans nova', 'gisha', 'goudy old style', 'gulim', 'gulimche', 'gungsuh', 'gungsuhche', 'hebrew', 'helvetica', 'hoefler text', 'hololens mdl2 assets', 'impact', 'ink free', 'irisupc', 'iskoola pota', 'japanese', 'jasmineupc', 'javanese text', 'jazz let', 'kaiti', 'kalinga', 'kartika', 'khmer ui', 'kodchiangupc', 'kokila', 'korean', 'lao', 'lao ui', 'latha', 'leelawadee', 'leelawadee ui', 'leelawadee ui semilight', 'levenim mt', 'lilyupc', 'lucida bright', 'lucida console', 'lucida handwriting', 'lucida sans', 'lucida sans typewriter', 'lucida sans unicode', 'lucidatypewriter', 'microsoft jhenghei ui', 'microsoft new tai lue', 'microsoft phagspa', 'microsoft sans serif', 'microsoft tai le', 'microsoft uighur', 'microsoft yahei', 'microsoft yahei ui', 'microsoft yi baiti', 'mingliu', 'mingliu_hkscs', 'mingliu_hkscs-extb', 'mingliu-extb', 'miriam', 'monaco', 'mongolian baiti', 'moolboran', 'ms gothic', 'ms mincho', 'ms pgothic', 'ms pmincho', 'ms ui gothic', 'mv boli', 'myanmar text', 'narkisim', 'neue haas grotesk text pro', 'new century schoolbook', 'news gothic mt', 'nirmala ui', 'no automatic language associations', 'noto', 'nsimsun', 'nyala', 'oldtown', 'optima', 'palatino', 'palatino linotype', 'papll nova extra bold', 'rod', 'sakkal majalla', 'sanskrit text', 'segoemdl2assets', 'segoe print', 'segoe script', 'segoe ui', 'segoe ui emoji', 'segoe ui historic', 'segoe ui symbol', 'shonar bangla', 'shruti', 'simhei', 'simkai', 'simplified arabic', 'simplified chinese', 'simsun', 'simsun-extb', 'sitka', 'snell roundhan', 'stencil std', 'sylfaen', 'symbol', 'tahoma', 'thai', 'times new roman', 'traditional arabic', 'traditional chinese', 'trattatello', 'trebuchet ms', 'ud digi kyokasho', 'ud digi kyokasho nk-r', 'ud digi kyokasho np-r', 'ud digi kyokasho n-r', 'urdu typesetting', 'urw chancery', 'utsaah', 'vani', 'verdana', 'verdana pro', 'vijaya', 'vrinda', 'webdings', 'westminster', 'wingdings', 'yu gothic', 'yu gothic ui', 'yu mincho', 'zapf chancery']
 
 // function to change font style based on user input
 function font_style_change()
 {
-  d = new Detector();
   var fetched_font = document.querySelector('#font_style').value;
-  if (d.detect(fetched_font) == false)
+  if (supported_fonts.includes(fetched_font.toLowerCase()) == false)
   {
     alert(fetched_font + " is not a valid font")
   }
   else
   {
-    alert("exists");
+    var style = document.createElement('style');
+    style.innerHTML = `
+    * {
+    font-family: ` + fetched_font + ` !important;
+    }
+    `;
+    document.head.appendChild(style);
   }
 }

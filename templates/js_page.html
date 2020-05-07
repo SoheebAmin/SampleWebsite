@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="/static/css/js_page_styles.css">
   <script defer src="/static/js/js_page_scripts.js"></script>
+  <script defer src="/static/js/js_page_scripts_fonts.js"></script>
   
   <!-- Place to inject CSS for changing the pages font colors, size, and styles-->
 {% endblock %}
@@ -91,10 +92,14 @@
       </form>
       <p class="w3-text-grey">The input tag marks this as a type of number with a min and max to limit the range</p>
 
-      <form onsubmit="font_style_change(); return false;">
-      <input type="text" id="font_style" style="width: 200px" placeholder="Your Font Style">
+      
+    <form autocomplete="off" onsubmit="font_style_change(); return false;">
+      <div class="autocomplete" style="width:300px;">
+        <input type="text" id="font_style" placeholder="Your Font Style">
+      </div>
       <button class="w3-button w3-red">Update</button>
-      <p class="w3-text-grey">A helper function checks if your font exists, then document.CreateElement injects the input. Case insensitive.</p>
+    </form>
+      <p class="w3-text-grey">The drop down is from a W3 template. document.CreateElement injects the selection. Case insensitive.</p>
     </div>
   </div>
 </div>

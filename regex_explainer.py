@@ -13,7 +13,7 @@ I went to the store with 10 dollars in my pocket. I bought milk for $2.50. I bou
 # ["10 dollars", "$2.50", "$1", "two dollars"]
 
 # We first want to create a variable using re.compile(r"<the pattern>"). Raw strings (the r) are used so we can use \ without escaping.
-# Let's start simple and just find the $ signs, which there are two of.
+# Let's start simple and just find everything in quotes.
 our_regex_pattern = re.compile(r'"(.*?)"')
 
 # Now we can search our string and store the results in a match object. We use the find all to get a list of all matches.

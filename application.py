@@ -1,4 +1,4 @@
-# To run Flask from VS Code, first type in: $env:FLASK_APP = "application.py"
+# To run Flask from VS Code, first type in: $env:FLASK_APP = "application.py"$env:FLASK_APP = "application.py"
 #  and then: python -m flask run 
 
 # imports Flask

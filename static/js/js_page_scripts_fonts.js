@@ -64,15 +64,22 @@ function font_style_change()
   {
     alert(fetched_font + " is not a valid font. You didn't select from the list!")
   }
+  // Removes previous font selection by checking if the ID for it exists. Then, inject a new style.
   else
   {
-    var style = document.createElement('style');
-    style.innerHTML = `
-    * {
-    font-family: ` + fetched_font + `;
+    if (document.querySelector("#appended_style") != null)
+    {
+      var elem = document.getElementById("appended_style");
+      elem.parentNode.removeChild(elem);
     }
-    `;
-    document.head.appendChild(style);
+  var style = document.createElement('style');
+  style.setAttribute('id', 'appended_style');
+  style.innerHTML = `
+  * {
+  font-family: ` + fetched_font + `;
+  }
+  `;
+  document.head.appendChild(style);
   }
 }
 

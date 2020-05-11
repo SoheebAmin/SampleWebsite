@@ -6,7 +6,6 @@ var possible_supported_fonts = ['Abadi MT Condensed Light', 'Aharoni', 'Aharoni 
 
 
 // Helper function to see if font is valid for the user. There is no simple way to do this except to literally test each font for the user.
-// This is all borrowed code. Honestly, I don't understand all of it, but I tested it and it works. 
 // Usage: d = new Detector();
 // d.detect('font name');
 //Source: https://gist.github.com/szepeviktor/d28dfcfc889fe61763f3
@@ -58,24 +57,25 @@ var Detector = function() {
 // function to change font style based on user input
 function font_style_change()
 {
+  // remove previous font if one was already set. Must be done before font check.
+  if (document.querySelector("#appended_style") != null)
+  {
+    var elem = document.getElementById("appended_style");
+    elem.parentNode.removeChild(elem);
+  }
   var fetched_font = document.querySelector('#font_style').value;
   d = new Detector();
   if (d.detect(fetched_font) == false)
   {
     alert(fetched_font + " is not a valid font. You didn't select from the list!")
   }
-  // Removes previous font selection by checking if the ID for it exists. Then, inject a new style.
+  // Injects the fetched font ontp all font styles on the page.
   else
   {
-    if (document.querySelector("#appended_style") != null)
-    {
-      var elem = document.getElementById("appended_style");
-      elem.parentNode.removeChild(elem);
-    }
   var style = document.createElement('style');
   style.setAttribute('id', 'appended_style');
   style.innerHTML = `
-  * {
+  body,h1,h2,h3,h4,h5,h6,.w3-bar,h1,button {
   font-family: ` + fetched_font + `;
   }
   `;

@@ -57,19 +57,21 @@ var Detector = function() {
 // function to change font style based on user input
 function font_style_change()
 {
-  // remove previous font if one was already set. Must be done before font check.
-  if (document.querySelector("#appended_style") != null)
-  {
-    var elem = document.getElementById("appended_style");
-    elem.parentNode.removeChild(elem);
-  }
+  // checks if selection is valid by running font detection code on input.
   var fetched_font = document.querySelector('#font_style').value;
   d = new Detector();
   if (d.detect(fetched_font) == false)
   {
     alert(fetched_font + " is not a valid font. You didn't select from the list!")
+    return 1;
   }
-  // Injects the fetched font ontp all font styles on the page.
+  // remove previous font if one was already set.
+  if (document.querySelector("#appended_style") != null)
+  {
+    var elem = document.getElementById("appended_style");
+    elem.parentNode.removeChild(elem);
+  }
+  // Injects the fetched font onto the relevant font styles on the page.
   else
   {
   var style = document.createElement('style');
@@ -108,13 +110,15 @@ function autocomplete(inp, arr) {
         if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
           /*create a DIV element for each matching element:*/
           b = document.createElement("DIV");
-          b.style ="font-family: " + arr[i];
-          /*make the matching letters bold:*/
-          b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+
 
           // My addition: This changes every matching item to the font it represents.
-          b.innerHTML += arr[i].substr(val.length);
+          b.style = "font-family: " + arr[i];
 
+
+          /*make the matching letters bold:*/
+          b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+          b.innerHTML += arr[i].substr(val.length);
           /*insert a input field that will hold the current array item's value:*/
           b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
           /*execute a function when someone clicks on the item value (DIV element):*/

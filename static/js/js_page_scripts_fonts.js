@@ -83,10 +83,7 @@ function font_style_change()
   }
 }
 
-
-
-
-// The code for the autocomplete box, taken from W3 schools
+// The code for the autocomplete box, taken mostly from W3 schools
 
 function autocomplete(inp, arr) {
   /*the autocomplete function takes two arguments,
@@ -111,9 +108,13 @@ function autocomplete(inp, arr) {
         if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
           /*create a DIV element for each matching element:*/
           b = document.createElement("DIV");
+          b.style ="font-family: " + arr[i];
           /*make the matching letters bold:*/
           b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+
+          // My addition: This changes every matching item to the font it represents.
           b.innerHTML += arr[i].substr(val.length);
+
           /*insert a input field that will hold the current array item's value:*/
           b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
           /*execute a function when someone clicks on the item value (DIV element):*/

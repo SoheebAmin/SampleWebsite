@@ -30,9 +30,13 @@
     <div class="w3-twothird">
       <h1>Run Programs</h1>
       <h5 class="w3-padding-12">We can use Javascript to run functions with users providing input. </h5>
-      <p class="w3-text-grey">This is similar to what we can do with Flask, but nothing will go back to our servers since the code is run 
+      <p class="w3-text-grey">
+        This is similar to what we can do with Flask, but nothing will go back to our servers since the code is run 
         locally. We can leverage this programming power by having Javascript scramble the text in the input box. Let's also provide an error 
-        message if the box is left blank.</p>
+        message if the box is left blank.
+      </p>
+
+      <br>
       
       <!-- Scambles user input with a JS function. Return false means keep us on the page -->
       <form onsubmit="scramble(); return false;">
@@ -47,7 +51,7 @@
       </label>  
     </div>
 
-    <!-- font awesome icon UPDATED-->
+    <!-- font awesome icon -->
     <div class="w3-third w3-center">
       <i class="fa fa-gears w3-padding-64 w3-text-red" style="font-size:200px" style= "font-family: FontAwesome !important"></i>
     </div>
@@ -67,10 +71,14 @@
       <h1>Control the Webpage</h1>
       <h5 class="w3-padding-32">Using JavaScript, we can update the code that displays this page.</h5>
 
-      <p class="w3-text-grey">We can actually have JavaScript modify the wepage based on whatever requirements we want. For example, we can 
+      <p class="w3-text-grey">
+        We can actually have JavaScript modify the wepage based on whatever requirements we want. For example, we can 
         udpate the background or font color, font size, or font style. These are all done by creating style tags and injecting the desired
         CSS at the end of the head tag. We also force the style globally with the "!important" property. For overrides, it is better to
-        learn CSS specificity, but this property is fine for a temporary page change like these ones.</p>
+        learn CSS specificity, but this property is fine for temporary page changes like these ones.
+      </p>
+
+      <br>
 
       <!-- Dynamically change bg and font properties on page -->
       <form onsubmit="color_change('#bg_color'); return false;">
@@ -79,6 +87,7 @@
       </form>
       <p class="w3-text-grey">A helper function checks if you color exists, then document.createElement injects the input.</p>
 
+      <br>
 
       <form onsubmit="color_change('#font_color'); return false;">
         <input type="text" id="font_color" style="width: 100px" placeholder="Font Color" >
@@ -86,20 +95,23 @@
       </form>
       <p class="w3-text-grey">This calls the same Javascript function as font color, with a different parameter (the input ID).</p>
 
+      <br>
+
       <form onsubmit="font_size_change(); return false;">
         <input type="number" min="1" max="60" id="font_size" style="width: 100px" placeholder="Font Size">
         <button  class="w3-button w3-red">Update</button>
       </form>
       <p class="w3-text-grey">The input tag marks this as a type of number with a min and max to limit the range</p>
 
-      
+      <br>
+
     <form autocomplete="off" onsubmit="font_style_change(); return false;">
       <div class="autocomplete" style="width:300px;">
         <input type="text" id="font_style" placeholder="Your Font Style">
       </div>
       <button class="w3-button w3-red">Update</button>
     </form>
-      <p class="w3-text-grey">The drop down is from a W3 template. document.CreateElement injects the selection. Case insensitive.</p>
+      <p class="w3-text-grey">document.CreateElement injects the selection from the W3-based drop down. Case insensitive.</p>
     </div>
   </div>
 </div>
@@ -108,28 +120,24 @@
 <div class="w3-row-padding w3-padding-64 w3-container">
   <div class="w3-content">
     <div class="w3-twothird">
-      <h1>Filler</h1>
-      <h5 class="w3-padding-12">We can use Filler to run functions with users providing input. </h5>
-      <p class="w3-text-grey">This is Filler to what we can do with Flask, but nothing will go back to our servers since the code is run 
-        locally. We can leverage this programming power by having Javascript scramble the text in the input box. Let's also provide an error 
-        message if the box is left blank.</p>
-      
-      <!-- Scambles user input with a JS function. Return false means keep us on the page -->
-      <form onsubmit="scramble(); return false;">
-        <input type="text" id="scramble_text" style="width: 400px" placeholder="Text to scramble">
-        <button id="scramble_submit2" class="w3-button w3-red">Scramble</button>
-      </form>
-        <!-- Toggle for empty string method -->
-        <p class="w3-text-grey">For an empty entry, we can switch between the alert error and preventing submission.</p>
-        <label class="switch">
-        <input id="input_checkbox2" type="checkbox" onchange="toggle_input();">
-        <span class="slider round"></span>
-      </label>  
+      <h1>Have the page update itself</h1>
+      <h5 class="w3-padding-12">We can use Javascript to update what our page shows, with or without events</h5>
+      <p class="w3-text-grey">
+        Web pages that try to look alive use Javascript to have elements on the page update after a certain amount of time, such as a 
+        slideshow that will change pictures every few seconds. Pages can also be made to have elements update based on user actions, 
+        such as typing, clicking, scrolling, or even just hovering the mouse.
+      </p>
+
+      <br>
+
+      <!-- Javascript Event Listeners -->
+      <p id="hover_demo">This text will change to a random color 
+        <br> every time the mouse hovers over it.</p>
     </div>
 
     <!-- font awesome icon -->
     <div class="w3-third w3-center">
-      <i class="fa fa-exchange w3-padding-64 w3-text-red" style="font-size:200px"></i>
+      <i class="fa fa-refresh w3-padding-64 w3-text-red" style="font-size:200px"></i>
     </div>
   </div>
 </div>

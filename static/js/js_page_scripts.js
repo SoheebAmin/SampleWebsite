@@ -100,7 +100,6 @@ function color_change(id_of_input)
   {
     // removes a w3 class that creates a a grey bg for a div
     document.querySelector('#has_grey_class').classList.remove("w3-light-grey");
-    
     //adds new style based on input color
     style.innerHTML = `
     * {
@@ -145,3 +144,15 @@ function font_size_change()
   document.head.appendChild(style);
 }
 
+// function for mouse hover color and font change.
+document.getElementById("hover_demo").addEventListener("mouseover", mouseOver);
+document.getElementById("hover_demo").addEventListener("mouseout", mouseOut);
+
+function mouseOver() {
+  var randomColor = '#'+Math.floor(Math.random()*16777215).toString(16);
+  document.getElementById("hover_demo").style.color = randomColor;
+}
+
+function mouseOut() {
+  document.getElementById("hover_demo").style.color = "black";
+}

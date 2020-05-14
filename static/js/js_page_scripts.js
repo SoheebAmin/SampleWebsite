@@ -144,15 +144,25 @@ function font_size_change()
   document.head.appendChild(style);
 }
 
-// function for mouse hover color and font change.
-document.getElementById("hover_demo").addEventListener("mouseover", mouseOver);
-document.getElementById("hover_demo").addEventListener("mouseout", mouseOut);
+// functions for mouse hover color causing font style change.
+document.querySelector("#hover_demo").addEventListener("mouseover", mouseOver);
+document.querySelector("#hover_demo").addEventListener("mouseout", mouseOut);
 
 function mouseOver() {
   var randomColor = '#'+Math.floor(Math.random()*16777215).toString(16);
-  document.getElementById("hover_demo").style.color = randomColor;
+  document.querySelector("#hover_demo").style.color = randomColor;
 }
 
 function mouseOut() {
-  document.getElementById("hover_demo").style.color = "black";
+  document.querySelector("#hover_demo").style.color = "black";
+}
+
+
+// function for mouse click causing font size change.
+document.querySelector('#click_demo').addEventListener("click", click)
+
+var size_percent = 110
+function click() {
+  document.querySelector("#click_demo").style = "font-size:" + size_percent + "%";
+  size_percent += 10
 }

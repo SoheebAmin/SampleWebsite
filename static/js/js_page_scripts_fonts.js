@@ -204,3 +204,12 @@ for (i = 0; i < possible_supported_fonts.length; i++)
 /* initiate the autocomplete function, and pass along the supported fonts array as possible autocomplete values:*/
 autocomplete(document.querySelector("#font_style"), compatible_fonts);
 
+
+// function to auto-update the font of the text in the third grid of the page.
+
+function font_update() {
+  var random_font = compatible_fonts[Math.floor(Math.random() * compatible_fonts.length)];
+  document.querySelector("#update_demo").style = "font-family: " + random_font;
+}
+
+window.setInterval(font_update, 3000)

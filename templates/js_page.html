@@ -124,15 +124,28 @@
       <h5 class="w3-padding-12">We can use Javascript to update what our page shows, with or without events</h5>
       <p class="w3-text-grey">
         Web pages that try to look alive use Javascript to have elements on the page update after a certain amount of time, such as a 
-        slideshow that will change pictures every few seconds. Pages can also be made to have elements update based on user actions, 
-        such as typing, clicking, scrolling, or even just hovering the mouse.
+        slideshow that will change pictures every few seconds. Pages can use event listeners to have elements update based on user actions, 
+        such as typing, clicking, scrolling, or even just moving the mouse.
       </p>
 
       <br>
 
       <!-- Javascript Event Listeners -->
-      <p id="hover_demo">This text will change to a random color 
-        <br> every time the mouse hovers over it.</p>
+      <p id= "update_demo"> Using window.setInterval, This text will 
+        <br>                update to a random font every three seconds.
+      </p>
+
+      <br>
+
+      <p id= "click_demo"> Using the click listener, this text will increase
+        <br>               by 10% in size every time it is clicked.
+      </p>
+
+      <br>      
+
+      <p id="hover_demo">Using mouseOver & mouseOut, this text will change to
+        <br>             a random color every time the mouse hovers over it.
+      </p>
     </div>
 
     <!-- font awesome icon -->
@@ -144,6 +157,7 @@
 
 <!-- Bottom bar and Footer -->
 <div class="w3-container w3-black w3-center w3-opacity w3-padding-64">
+  <p> All  changes  made  on  the  page  will  be  undone  with  a  refresh  (F5).</p>
 </div>
 <footer style="text-align: center;">
  <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>

@@ -164,5 +164,5 @@ document.querySelector('#click_demo').addEventListener("click", click)
 var size_percent = 110
 function click() {
   document.querySelector("#click_demo").style = "font-size:" + size_percent + "%";
-  size_percent += 10
+  size_percent += 10;
 }

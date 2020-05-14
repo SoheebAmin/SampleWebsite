@@ -111,7 +111,7 @@
       </div>
       <button class="w3-button w3-red">Update</button>
     </form>
-      <p class="w3-text-grey">document.CreateElement injects the selection from the W3-based drop down. Case insensitive.</p>
+      <p class="w3-text-grey">document.CreateElement injects the selection from the drop down. Case insensitive.</p>
     </div>
   </div>
 </div>
@@ -168,8 +168,18 @@
 {% block modal_text %}
             <h4 class="modal-title"><b>JavaScript: Some Demonstrations</b></h4>
           </div>
-          
-          <div class="modal-body" style="text-align: center">
-            <p>Some text in the modal.</p>
+  
+          <div class="modal-body">
+            <p>This page shows the different ways Javascript can be used to update the page.
+              <ul>The first grid has a function called on submit that scrambles the input and displays it as an alert</ul>
+              <ul>The second grid has 4 different functions called on typed inputs. The first two change either the bg or font
+                to a validated color, with the different element IDs as the parameter for a function that updates the page style. 
+                The third allows an integer selection to change fonts.</ul>
+              <ul>The font selection is the most intricate part of the page. The auto-complete fonts are the only ones the pages
+                can display. This was tricky to do, but basically, using borrowed code, the webpage checks every front from a list 
+                and then only includes the ones the browser can render. The drop down is from W3 schools, but modified to show each
+                font in the style it represents.</ul>
+              <ul>The final grid of the page shows interval and event listeners used to have the page update with light to no input.</ul>
+            </p>
           </div>
 {% endblock %}

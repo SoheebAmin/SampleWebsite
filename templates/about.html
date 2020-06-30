@@ -1,0 +1,30 @@
+<!--This page just gives basic info about the website-->
+{% extends "layout.html" %}
+
+
+{% block head %}
+<title>About This Website</title>
+
+  <!-- Local CSS and JS Sources -->
+  <link rel="stylesheet" href="/static/css/about_page_styles.css">
+  <script defer src="/static/js/about_page.js"></script>
+{% endblock %}
+
+
+{% block body %}
+  <!--text to display-->
+  <div class="text-dark" style="text-align: center;">
+    <h1>About This Website</h1>
+    <h3>Some ways this website can help you with HTML, CSS, JavaScript, and Flask</h3>
+  </div>
+{% endblock %}
+
+
+{% block modal_text %}
+            <h4 class="modal-title"><b>Lets Explain This Modal</b></h4>
+          </div>
+          
+          <div class="modal-body" style="text-align: center">
+            <p>Since this page is about explanations, let me take a second to explain this helpful alternative to the simple alert function.</p>
+          </div>
+{% endblock %}

@@ -21,14 +21,9 @@ def bg_page():
 def js_page():
     return render_template("js_page.html")
 
-@app.route("/forms.html")
-def forms():
-    return render_template("forms.html")
-
-@app.route("/flask_page.html")
-def flask_page():
-    return render_template("flask_page.html")
-
+@app.route("/about.html")
+def about():
+    return render_template("about.html")
 
 
 

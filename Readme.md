@@ -1,27 +1,27 @@
-# A Pracitcal Guide to Make Websites
+# A Practical Guide to Make Websites
 
 NOTE: The static, non-flask version of this website is live here: https://soheebamin.github.io/webtutorial_live
 
-This project was made first and foremost to help myself practice creating all the elements of a dynamic website. The files in this folder create a sample website with the sole purpose of highlighting different features of HTML, CSS, Javascript.
+This project was made first and foremost to help myself practice creating all the elements of a dynamic website. The files in this folder create a sample website with the sole purpose of highlighting different features of HTML, CSS, JavaScript.
 
 ## Organization
 
-If it isn't clear already, the root folder has the HTML pages, with the CSS, JS, and other files having their own folders.
+The root folder has the HTML pages, with the CSS, JS, and other files having their own folders.
 
 ## Some Things to Note
 
 The index page has the most explanation of tags and elements, with unique features of other pages explained on that page.
 
-The website relies on CSS from Bootstrap and W3 Schools, with their stylesheets included on the pages they are used. There are also local stylesheets, which the CSS of may be from antother website (mentioned in a comment on top) or it may be a self-made class to apply to select elements as needed.
+The website relies on CSS from Bootstrap and W3 Schools, with their stylesheets included on the pages they are used. There are also local stylesheets, which the CSS of may be from another website (mentioned in a comment on top) or it may be a self-made class to apply to select elements as needed.
 
 
-# How to Add/Remove HTML, CSS, and Javascript from Webpages
+# How to Add/Remove HTML, CSS, and JavaScript from Webpages
 
-The most I had to learn in building this sample website had to deal with how to dynamically alter the HTML, CSS, and Javascript within a webpage. Let's look at the techniques used here for each one.
+The most I had to learn in building this sample website had to deal with how to dynamically alter the HTML, CSS, and JavaScript within a webpage. Let's look at the techniques used here for each one.
 
 ## HTML
 
-HTML was loaded and unlaoded using a simple Javascript function that used JQuery. So first, be sure to include JQuery in the header, such as via this source:
+HTML was loaded and unloaded using a simple JavaScript function that used jQuery. So first, be sure to include jQuery in the header, such as via this source:
 
 ```html
 
@@ -31,7 +31,7 @@ HTML was loaded and unlaoded using a simple Javascript function that used JQuery
 
 ```
 
-The function ias as follows. It can be included in a script tage in the head, or factored out into another .js file.
+The function as as follows. It can be included in a script tage in the head, or factored out into another .js file.
 
 ```javascript
 
@@ -54,7 +54,7 @@ The "#id" in the function ("id" replaced with your own tag name) will identify w
 
 ## CSS
 
-CSS was the most sraightforward of the bunch. Stylesheets were swapped out with a simple Javascript function that finds an element by ID and updates the reference link for the CSS. I used another simple Javascript counting function to append a number to the name of the CSS stylesheet to correspond to a list of sheets which differed in name by a single number.
+CSS was the most straightforward of the bunch. Stylesheets were swapped out with a simple Javascript function that finds an element by ID and updates the reference link for the CSS. I used another simple Javascript counting function to append a number to the name of the CSS stylesheet to correspond to a list of sheets which differed in name by a single number.
 
 ```javascript
 
